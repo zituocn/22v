@@ -9,9 +9,9 @@ golang 1.6+
 `create database vmovie`
 
 ### 运行
-`go get github.com/zituocn/VMovie`  
+`go get github.com/zituocn/22v`  
 `go build`  
-`./VMovie`  
+`./22v`  
 会自动建表
 
 ###后台登录

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>美剧下载_美剧迅雷下载_好看的美剧_新美剧_2016美剧_高清美剧|爱美剧</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="爱美剧,新美剧,美剧下载,美剧迅雷下载,美剧网盘下载" />
+<meta name="Description" content="爱美剧:第一时间提供高清美剧迅雷下载,美剧推荐,带中文字幕的美剧下载等服务。一起爱美剧！" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/nivo-slider.css" rel="stylesheet" type="text/css">
+<link href="/static/css/default/default.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.nivo.slider.js"></script>
+<meta name="baidu-site-verification" content="xqFroOcUui" />
+<base target="_blank" />
+<script type="text/javascript">
+	$(function(){
+		$('#slider').nivoSlider();
+	});
+</script>
+</head>
+<body>
+	{{template "header" .}}
+	<div class="box">
+		<div class="content">
+			<div class="slider slider-wrapper theme-default">
+				<div id="slider" class="nivoSlider">
+					{{range .mphoto}}
+					<a href="/v/{{.Id}}/"><img src="{{.Iphoto}}?imageView2/1/w/558/h/314/q/100" width="558" height="314" alt="" title="{{.Name}}({{.Ename}})" /></a>{{end}}
+				</div>				
+			</div>
+			<div class="wlist">
+				<ul>
+					<li class="title">今日播出(星期{{.week}})</li>
+					{{range .wlist}}
+					<li><a href="/v/{{.Id}}/" title="{{.Name}}">{{substr .Name 0 10}}({{substr .Ename 0 20}})</a><span class="time">{{GetMovieUpdateEP .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/today/">更多今日更新...</a></li>
+				</ul>
+			</div>				
+		</div>
+	</div>
+	<div class="box">
+		<div class="content">
+			<div class="nlist">
+				<ul>
+					<li class="title"><a href="/new/" class="red">新剧推荐</a></li>
+				{{range .newlist}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}									
+				</ul>
+			</div>
+			<div class="alist">
+				<ul>
+					<li class="title"><a href="/news/" class="green">美剧资讯</a></li>
+					{{range .plist}}
+					<li><a href="/article/{{.Id}}/" title="{{.Title}}">{{substr .Name 0 24}}</a></li>{{end}}
+					<li class="more"><a href="/news/">更多资讯..</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="content">
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/200/" class="blue">热门美剧</a></li>
+					{{range .list200}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/200/">更多受欢迎...</a></li>
+				</ul>
+			</div>	
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/100/">最近更新</a></li>
+					{{range .list100}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/100/">更多更新...</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="box">
+		<div class="content">
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/1/">动作</a></li>
+					{{range .list1}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/1/">更多动作类...</a></li>
+				</ul>
+			</div>
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/2/">科幻魔幻</a></li>
+					{{range .list2}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/2/">更多科幻魔幻...</a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<div class="box">
+		<div class="content">
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/3/">情景喜剧</a></li>
+					{{range .list3}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/3/">更多情景喜剧...</a></li>
+				</ul>
+			</div>
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/4/">罪案碟战</a></li>
+					{{range .list4}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/4/">更多罪案碟战...</a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<div class="box">
+		<div class="content">
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/5/">灵异惊悚</a></li>
+					{{range .list5}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/5/">更多灵异惊悚...</a></li>
+				</ul>
+			</div>
+			<div class="slist">
+				<ul>
+					<li class="title"><a href="/m/6/">律政医务剧情</a></li>
+					{{range .list6}}
+					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li class="more"><a href="/m/6/">更多律政医务剧情...</a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="box">
+		<div class="links">
+			{{str2html .links}}
+		</div>
+	</div>
+	{{template "footer"}}			
+</body>
+</html>

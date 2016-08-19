@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>资讯列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+var admindir = "{{$.admindir}}";
+var count = {{.count}};
+$(function(){
+  if(count==0){
+     $("#show").hide();
+     $("#nodata").show();
+   }
+});
+function delrecommend(id)
+{
+  if(confirm("是否确认删除此资讯，不可恢复？")){
+    $.ajax({
+      type:"GET",
+      url:admindir+"recommend/delete/"+id,
+      data:"",
+      cache:false,
+      dataType:"json",
+      success:function(data){
+        if(data.Code==0){
+          self.location.reload();
+        }else{
+          alert(data.Msg);
+        }
+      },
+      error:function(data){
+        alert(data.Msg);
+      }
+
+    });
+
+  }
+  return false;
+}
+</script>
+</head>
+<body>
+<div id="main">
+<h2>推荐列表</h2>
+<div class="content" style="margin-top:6px;">
+<form method="post">
+  <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"  class="list">
+    <tr>
+      <th width="45%" height="35" bgcolor="#ADE2F2"><div align="left" style="margin-left:2px;">名称</div></th>
+      <th width="10%" bgcolor="#ADE2F2"><div align="center">修改</div></th> 
+      <th width="10%" bgcolor="#ADE2F2"><div align="center">责编</div></th>
+      <th width="15%" bgcolor="#ADE2F2"><div align="center">时间</div></th>
+      <th width="10%" bgcolor="#ADE2F2"><div align="center">删除</div></th>         
+    </tr>
+	<tbody id="show">
+    {{range .list}}
+    <tr>
+      <td height="30">{{.Name}}</td>
+      <td><div align="center"><a href="{{$.admindir}}recommend/edit/{{.Id}}">修改</a></div></td>   
+      <td><div align="center">admin</div></td>
+      <td><div align="center">{{dateformat .Addtime "2006-01-02 15:04"}}</div></td>
+      <td><div align="center"><a href="javascript:void(0);" onclick="return delrecommend({{.Id}});">删除</a></div></td>
+    </tr>
+    {{end}}
+  </tbody>
+  <tbody id="nodata" style="display:none;">
+    <td  colspan="5" bgcolor="#ffffff">没有内容...</td>
+  </tbody>
+    <tr>
+      <td height="30" colspan="5" bgcolor="#ffffff" align="left">
+      <div class="pager">
+       
+        </div>
+       </td>
+    </tr>
+  </table>
+  </form>
+</div>
+</div>
+</body>
+</html>

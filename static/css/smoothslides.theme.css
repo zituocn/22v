@@ -1,0 +1,199 @@
+/* Outer Container */
+.smoothslides, .smoothslides-on {
+	position:relative;
+	font-size:0;
+	line-height: 0;
+	min-height: 40px;
+	height:280px;	
+}
+/* Outer Container Background (visible while loading) */
+.smoothslides {
+	background:rgba(255,255,255,.5);
+}
+/* Hide images until loaded */
+.smoothslides img {
+	display:none;
+}
+
+/* Loading animation keyframes */ 
+@keyframes throb {
+	0% {
+		opacity:0;
+		transform:scale(1);
+	}
+	50% {
+		opacity:1;
+		transform:scale(.2);
+	}
+	100% {
+		opacity:0;
+		transform:scale(1);
+	}
+}
+@-webkit-keyframes throb {
+	0% {
+		opacity:0;
+		-webkittransform:scale(1);
+	}
+	50% {
+		opacity:1;
+		-webkittransform:scale(.2);
+	}
+	100% {
+		opacity:0;
+		-webkittransform:scale(1);
+	}
+}
+/* Loading animation */
+.smoothslides:before {
+	content:'';
+	position: absolute;
+	width:8px;
+	height:8px;
+	left:50%;
+	top:50%;
+	margin-left:-4px;
+	margin-top:-4px;
+	border-radius:15px;
+	border:2px solid #000;
+	animation: throb 1s infinite;
+	-webkit-animation: throb 1s infinite;
+}
+
+/* wrapper around all slides */
+.ss-slide-stage {
+	position: relative;
+	overflow: hidden;
+	border-radius:5px;
+	/* This fixes the bug in chrome where border-radius doesn't work with overflow hidden */
+	-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+/* wrapper around each slide */
+.ss-slide {
+	position: absolute;
+	top:0;
+	left:0;
+	transform-origin:center;
+	display: block;
+	width:100%;
+	zoom: 1;
+}
+.ss-slide img{
+	height:auto;
+	/* max-width, or width gets set via JS */
+}
+/* Caption wrapper. Used for centering */
+.ss-caption-wrap {
+	position: absolute;
+	bottom:0;
+	width:100%;
+	padding:0 5px 5px 5px;
+	text-align:center;
+	box-sizing:border-box;
+}
+
+/* Caption */
+.ss-caption {
+	min-height:20px;
+	background:rgb(255,255,255);
+	background: rgba(255, 255, 255, 0.6);
+	color: #000;
+	text-shadow: 0 0 10px #fff;
+	font-size:14px;
+	font-weight: bold;
+	line-height: 1.4em;
+	border-radius:4px;
+	padding:5px 0 2px 0;
+	box-sizing:border-box;
+	font-family:"Microsoft YaHei",Veranda, sans-serif;
+}
+
+/* Previous and Next buttons */
+.smoothslides-on a.ss-prev, .smoothslides-on a.ss-next {
+	position: absolute;
+	bottom:5px;
+	left:5px;
+	font-size:14px;
+	line-height: 1em;
+	color:#A1A1A1;
+	text-decoration: none;
+	background:#fff;
+	width: 50px;
+	height: 40px;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 3px;
+	opacity:.5;
+	transition:.2s ease-out;
+	font-family: sans-serif;
+}
+
+.smoothslides-on  a.ss-next {
+	left:auto;
+	right:5px;
+}
+/* Highlight nav btns when hovering over the slideshow */
+.smoothslides-on:hover .ss-prev, .smoothslides-on:hover .ss-next {
+	opacity: 1;
+}
+
+.smoothslides-on .ss-prev:hover, .smoothslides-on .ss-next:hover {
+	background:#fff;	
+	color:#000;
+}
+
+/* Pagination wrapper. Used for centering */
+.ss-paginate-wrap {
+	position: absolute;
+	bottom:-30px;
+	width:100%;
+	text-align:center;
+}
+.ss-paginate {
+	display: inline-block;
+	line-height: 0;
+}
+/* Pagination dots */
+.ss-paginate a:link, .ss-paginate a:visited {
+	display: inline-block;
+	width: 16px;
+	height: 4px;
+	border-radius: 10px;
+	margin: 0 5px;
+	background:#ccc;
+	background: rgba(0,0,0,.1);
+	border: 2px solid #fff;
+	transition: .3s;
+}
+.ss-paginate a:hover {
+	background:#ddd;
+	background:rgba(0,0,0,.3);
+}
+.ss-paginate a.ss-paginate-current {
+	background:#000;
+	background: rgba(0,0,0,.5);
+}
+
+/* changes for smaller screens */
+@media (max-width: 600px) {
+	.ss-paginate-wrap {
+		bottom:-35px;
+	}
+	.ss-caption {
+		min-height:0;
+		padding:5px;
+		font-size:12px;
+	}
+	a.ss-prev, a.ss-next {
+		bottom:auto;
+		top:50%;
+		margin-top:-25px;
+		color:#000;
+		background:rgba(255,255,255,.3);
+		color:#444;
+	}
+	.smoothslides-on, .ss-slide-stage {
+		border-radius:0;
+	}
+}

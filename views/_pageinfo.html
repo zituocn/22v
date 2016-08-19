@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{{.info.Title}}|爱美剧</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{{.info.Keywords}}" />
+<meta name="Description" content="{{.info.Description}}" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+{{template "header" .}}
+	<div class="box">
+		<div class="pageinfo">
+			<div class="location">现在的位置：<a href="/">首页</a> > <a href="/news/">美剧资讯</a> > 文章正文</div>
+			<div class="clear"></div>
+			<div class="movie">
+				<h3>{{.info.Title}}</h3>
+				<div class="about">发布时间：{{dateformat .info.Addtime "2006-01-02 15:04"}} / 责任编辑：{{.info.Editor}} / <a href="#talk">给我留言</a></div>
+				<div class="clear"></div>
+				<div class="pagetext">
+					{{str2html .info.Content}}
+				</div>
+				<div class="clear"></div>
+				<a name="talk"></a>
+				<div class="talk">
+				<!-- 多说评论框 start -->
+					<div class="ds-thread" data-thread-key="A{{.info.Id}}" data-title="{{.info.Title}}" data-url="https://22v.net/article/{{.info.Id}}/"></div>
+				<!-- 多说评论框 end -->
+				<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+				<script type="text/javascript">
+				var duoshuoQuery = {short_name:"22v"};
+					(function() {
+						var ds = document.createElement('script');
+						ds.type = 'text/javascript';ds.async = true;
+						ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+						ds.charset = 'UTF-8';
+						(document.getElementsByTagName('head')[0] 
+						 || document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+					</script>
+					<!-- 多说公共JS代码 end -->
+				</div>				
+			</div>
+			<div class="panel">
+				<ul>
+					<li class="title">热门美剧下载</li>
+					{{range .hostlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>				
+				<ul>
+					<li class="title">随便看看</li>
+					{{range .randlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>		
+			</div>
+		</div>
+	</div>
+	{{template "footer"}}		
+</body>
+</html>

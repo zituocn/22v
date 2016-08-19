@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>影片关系列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+var admindir = "{{$.admindir}}";
+
+function delrelation(id)
+{
+  if(confirm("是否确认删除此影片关系，不可恢复？")){
+    $.ajax({
+      type:"GET",
+      url:admindir+"relation/delete/"+id,
+      data:"",
+      cache:false,
+      dataType:"json",
+      success:function(data){
+        if(data.Code==0){
+          self.location.reload();
+        }else{
+          alert(data.Msg);
+        }
+      },
+      error:function(data){
+        alert(data.Msg);
+      }
+
+    });
+
+  }
+  return false;
+}
+</script>
+</head>
+<body>
+<div id="main">
+<h2>影片关系列表</h2>
+<div class="content" style="margin-top:6px;">
+<form method="post">
+	<table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+	  <tr>
+		<td height="20">
+    <input type="text" name="keyword" id="keyword" placeholder="影片关系名，支持模糊查询..." class="input" style="width:220px" value="{{.keyword}}" />
+    <input type="submit" name="enter" value=" 查询关系 " id="enter" class="button bghuang" />
+    </td>
+		</tr>
+	</table>
+  <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"  class="list">
+    <tr>
+      <th width="17%" height="35" bgcolor="#ADE2F2"><div align="left" style="margin-left:2px;">关系名</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">详情</div></th> 
+      <th width="10%" bgcolor="#ADE2F2"><div align="center">建立时间</div></th>
+      <th width="20%" bgcolor="#ADE2F2"><div align="center">影片</div></th>
+      <th width="5%" bgcolor="#ADE2F2"><div align="center">删除</div></th>    
+    </tr>
+	<tbody id="show">
+  {{range .list}}
+    <tr>
+      <td height="30"><a href="{{$.admindir}}relation/detail/{{.Id}}" style="margin-left:5px;">{{.Name}}</a></td>
+      <td><div align="center"><a href="{{$.admindir}}relation/detail/{{.Id}}">查看详情</a></div></td>      
+      <td><div align="center">{{dateformat .Addtime "2006-01-02 15:04"}}</div></td>
+      <td><div align="center">{{.Mids}}</div></td>
+      <td><div align="center"><a href="javascript:void(0);" onclick="return delrelation({{.Id}});">删除关系</a></div></td>
+    </tr>
+    {{end}}
+  </tbody>
+  <tbody id="nodata" style="display:none;">
+    <td  colspan="65" bgcolor="#ffffff">没有查询结果...</td>
+  </tbody>
+    <tr>
+      <td height="30" colspan="5" bgcolor="#ffffff" align="left">
+      <div class="pager">
+       {{str2html .pager}}
+        </div>
+       </td>
+    </tr>
+  </table>
+  </form>
+</div>
+</div>
+</body>
+</html>

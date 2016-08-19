@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>推荐管理</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/admin.js"></script>
+</head>
+<body>
+<form method="post" id="form1" action="{{.AdminDir}}recommend/save">
+<div id="main">
+<h2>添加/编辑 推荐</h2>
+<div class="content" style="margin-top:0px;">
+  <table  border="0" align="center" cellpadding="0" cellspacing="0" class="add">
+    <td>推荐名称 *</td>
+    <td><input name="name" type="text" id="name" class="input" style="width:500px" placeholder="推荐名称" value="{{.info.Name}}" /></td>
+    </tr>              
+    <tr>
+      <td valign="top">推荐内容 *</td>
+      <td valign="top" style="width:90%">
+          <textarea name="content"  style="width:98%;height:410px;font-size:16px;">{{.info.Content}}</textarea>
+      </td>
+    </tr>
+    </tr>   
+ 
+    <tr>
+      <td></td>
+      <td >
+      <input type="hidden" name="id" value="{{.info.Id}}" />
+      <input type="submit" name="enter" value=" 保存推荐 " id="enter" class="button bghuang" /> <input type="button" class="button" value=" 返回列表 "  onclick="self.location.href='{{.AdminDir}}recommend/list';"/></td>
+    </tr>
+  </table>
+</div>
+</div>
+</form>
+</body>
+</html>

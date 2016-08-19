@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>添加资讯</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<link href="/static/editor/themes/default/css/ueditor.min.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/admin.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/editor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/editor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/editor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+  var status = {{.info.Status}};
+  $(function(){
+        $("#status").val(status);
+  });
+
+</script>
+</head>
+<body>
+<form method="post" id="form1" action="{{.AdminDir}}page/save" onsubmit="return checkpost();">
+<div id="main">
+<h2>添加/编辑 资讯</h2>
+<div class="content" style="margin-top:0px;">
+  <table  border="0" align="center" cellpadding="0" cellspacing="0" class="add">
+    <td>文章标题 *</td>
+    <td><input name="name" type="text" id="name" class="input" style="width:500px" placeholder="文章标题" value="{{.info.Name}}" /></td>
+    </tr>
+    <tr>
+      <td>目录英名文 *</td>
+      <td>
+        <input type="text" name="ename" id="ename"  class="input" style="width:300px;" placeholder="文章的地址:2016meiju" value="{{.info.Ename}}" />
+      </td>
+    </tr>               
+    <tr>
+      <td valign="top">资讯内容 *</td>
+      <td valign="top" style="width:90%">
+          <textarea id="editor" name="content" type="text/plain" style="width:98%;height:410px">{{str2html .info.Content}}</textarea>
+      </td>
+    </tr>
+    </tr>
+       <tr>
+      <td>上传图片</td>
+      <td><iframe src="{{.AdminDir}}upload/add?obj=pagephoto" frameborder="no" scrolling="no" border="0" style="margin-left:10px;width:500px;border:0px;height:32px;"></iframe>
+      </td> 
+    </tr>   
+     <tr>
+      <td>SEO标题 *</td>
+      <td><input name="title" type="text" id="title" class="input" style="width:500px" value="{{.info.Title}}" placeholder="seo的文章标题" value="{{.info.Title}}" /></td>
+    </tr>
+     <tr>
+      <td>SEO关键字 *</td>
+      <td><input name="keywords" type="text" id="keywords" placeholder="多个用,分开" class="input" value="{{.info.Keywords}}" style="width:500px" value="{{.info.Keywords}}" /> </td>
+    </tr>
+      <tr>
+      <td>SEO页面介绍 *</td>
+      <td><input name="description" type="text" id="description" class="input" style="width:700px" value="{{.info.Description}}" /></td>
+    </tr>           
+    <tr>
+      <td valign="top">状态：</td>
+      <td valign="top" colspan="3">
+      <select name="status" id="status" class="select">
+           <option value="0" selected="selected">==状态==</option>
+           <option value="-1">前台隐藏</option>
+           <option value="0">正常状态</option>
+         </select></td>
+    </tr>   
+    <tr>
+      <td></td>
+      <td >
+      <input type="hidden" name="id" value="{{.info.Id}}" />
+      <input type="submit" name="enter" value=" 保存文章 " id="enter" class="button bghuang" /> <input type="button" class="button" value=" 返回列表 "  onclick="self.location.href='{{.AdminDir}}page/list';"/></td>
+    </tr>
+  </table>
+</div>
+</div>
+</form>
+    <script type="text/javascript">
+       var ue = UE.getEditor('editor',{
+          autoHeightEnabled: false,
+          autoFloatEnabled: false,
+          retainOnlyLabelPasted:true,
+          pasteplain:true
+       });
+      function setphoto(obj,img){
+          //html = ue.getContent();
+          ue.execCommand('inserthtml', "<p><img src=\""+img+"?watermark/2/text/54ix576O5YmnIHwgMjJWLk5FVA==/font/5b6u6L2v6ZuF6buR/fontsize/360/fill/I0NDQ0NDQw==/dissolve/100/gravity/South/dy/10\" /></p>");
+      }       
+    </script> 
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>影片关系</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+var cid = "{{.cid}}";
+var week = "{{.week}}";
+var done = "{{.done}}"
+var count = {{.count}};
+var admindir = "{{$.admindir}}";
+$(function(){
+  $("#cid").val(cid);
+  if(count==0){
+     $("#show").hide();
+     $("#nodata").show();
+  }
+
+  $("#checkall").click( 
+    function(){ 
+      if(this.checked){ 
+        $("input[name='xz']").each(function(){this.checked=true;}); 
+      }else{ 
+        $("input[name='xz']").each(function(){this.checked=false;}); 
+      } 
+    } 
+  ); 
+});
+
+function getcheckbox(name) {
+    var id_array = new Array();
+    $('input[name="' + name + '"]:checked').each(function() {
+        id_array.push($(this).val());
+    });
+
+    var val = id_array.join(',');
+    return val;
+}
+
+function checkrelation(){
+  var val = getcheckbox("xz");
+  $("#mids").val(val); 
+  var name = $("#name");
+  if(val.length==0||val==""){
+    alert("请先选择影片...");
+    return false;
+  }
+  if(name.val().length==0||name.val()==""){
+    alert("请输入关系名称...");
+    return false;
+  }
+  return true;
+}
+
+function isOverdown(a,b,c)
+{
+  var show = "";
+  if(c>0){
+    show = "<span style=\"color:#aaa;font-size:14px;\">已完结</span>"
+  }else
+  {
+    if(a!=b)
+      show = "未完结";
+    else
+      show = "<span style=\"color:#aaa;font-size:14px;\">已完结</span>";
+  }
+  document.writeln(show);
+}
+function isAdddown(a,b,id){
+   var show = "";
+  if(a!=b)
+    show = "<a href=\""+admindir+"down/add/"+id+"/\">添加下载</a>";
+  else
+    show = "<a href=\""+admindir+"/down/add/"+id+"/\" style=\"color:#666;\">修改下载</a>";
+  document.writeln(show); 
+}
+function OverDownStar(a,b,c){
+  var show = "";
+  if(c>0){ //✮✭★✩✫☆✰
+    show = "<span style=\"color:#ff3300;font-size:18px;\">✭<span>"
+  }else
+  {
+    if(a==b)
+      show = "<span style=\"color:#ff3300;font-size:18px;\">✭<span>"
+  }
+  document.writeln(show);  
+}
+
+</script>
+</head>
+<body>
+<div id="main">
+<h2>影片关系</h2>
+<div class="content" style="margin-top:6px;">
+<form method="post">
+  <table width="600" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+    <tr>
+    <td height="20">
+    <select name="cid" id="cid" class="select">
+      <option selected="selected" value="0">==所有分类==</option>
+      {{range .classlist}}
+      <option value="{{.Id}}">{{.Name}}</option>
+      {{end}}
+    </select>
+    <input type="text" name="keyword" id="keyword" placeholder="影片名" class="input" value="{{.keyword}}" />
+    <input type="submit" name="enter" value=" 查询影片 " id="enter" class="button bghuang" />
+    </td>
+    </tr>
+  </table>
+  <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"  class="list">
+    <tr>
+      <th width="33%" height="35" bgcolor="#ADE2F2"><div align="left" style="margin-left:2px;"><input type="checkbox" name="xzall" id="checkall"/> <label for="checkall" style="font-size:13px;">全选</label> 片名</div></th>
+      <th width="7%"  bgcolor="#ADE2F2">修改</th>  
+      <th width="5%" bgcolor="#ADE2F2"><div align="center">星期</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">首播日期</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">类型</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">责编</div></th>
+      <th width="6%" bgcolor="#ADE2F2"><div align="center">点击</div></th>
+      <th width="7%" bgcolor="#ADE2F2"><div align="center">已有/共集</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">状态</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">添加下载</div></th>
+    </tr>
+  <tbody id="show">
+  {{range .list}}
+    <tr>
+      <td height="30">
+       <input type="checkbox" name="xz" value="{{.Id}}" style="margin-left:3px;" />
+      <a href="/v/{{.Id}}/" target="_blank" style="margin-left:5px;">{{.Name}}({{.Ename}})</a><script type="text/javascript">OverDownStar({{.Episode}},{{.Hasepisode}},{{.Isend}});</script></td>
+      <td><div align="center"><a href="{{$.admindir}}movie/edit/{{.Id}}/">修改</a></div></td>
+      <td><div align="center">{{.Updateweek}}</div></td>
+      <td><div align="center">{{.Playdate}}</div></td>
+      <td><div align="center">{{.Cid|getclassname}}</div></td>
+      <td><div align="center">{{.Editor}}</div></td>
+      <td><div align="center">{{.Views}}</div></td>
+      <td><div align="center">{{.Hasepisode}} / {{.Episode}}</div></td>
+      <td><div align="center"><script>isOverdown({{.Episode}},{{.Hasepisode}},{{.Isend}});</script></div></td>
+      <td><div align="center"><script>isAdddown({{.Episode}},{{.Hasepisode}},{{.Id}});</script></div></td>
+    </tr>
+    {{end}}
+  </tbody>
+  <tbody id="nodata" style="display:none;">
+    <td  colspan="10" bgcolor="#ffffff">没有查询结果...</td>
+  </tbody>
+     <tr>
+      <td height="30" colspan="10" bgcolor="#ffffff" align="left">
+      <div class="pager">
+       {{str2html .pager}}
+        </div>
+       </td>
+    </tr> 
+   </table>
+   </form>
+   <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"  class="list">
+    <tbody>
+    <form action="{{.admindir}}relation/save" method="post" onsubmit="return checkrelation();">
+     <tr style="background: #fff;">
+       <td>根据所选，建立关系
+        关系名称：<input type="text" name="name" id="name" placeholder="如：国土安全系列" class="input" style="width:280px" />
+        <button type="submit" class="button" style="background:#92C83E"> 保存影片关系 </button>
+       <input type="hidden" name="mids" id="mids" />
+       </td>
+     </tr>
+     </form>
+   </tbody>  
+   </table>
+</div>
+</div>
+</body>
+</html>

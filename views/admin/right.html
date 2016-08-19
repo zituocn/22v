@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>系统信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="main">
+<h2>系统信息</h2>
+<div class="content" style="margin-top:0px;">
+  <table  border="0" align="center" cellpadding="0" cellspacing="0" class="list">
+    <tr>
+      <th width="20%">参数</th>
+      <th>数据</th>  
+    </tr>
+    <tr>
+      <td>影片数量：</td>
+      <td>{{.moviecount}} 部</td>
+    </tr>
+     <tr>
+      <td>服务器时间：</td>
+      <td>{{.servertime}}</td>
+    </tr>      
+     <tr>
+      <td>当前IP地址：</td>
+      <td>{{.clientip}}</td>
+    </tr>            
+    <tr>
+      <td>软件版本：</td>
+      <td>{{.systemver}}</td>
+    </tr>
+    <tr>
+      <td>服务器系统</td>
+      <td>{{.os}} / {{.arch}}</td>
+    </tr>    
+    <tr>
+      <td>CPU数量：</td>
+      <td>{{.cpunum}}</td>
+    </tr> 
+    <tr>
+      <td>主机名称：</td>
+      <td>{{.hostname}}</td>
+    </tr> 
+     <tr>
+      <td>Golang版本：</td>
+      <td>{{.gover}}</td>
+    </tr>
+                   
+    <tr>
+      <td>数据库环境：</td>
+      <td>Mysql Server</td>
+    </tr>
+   <tr>
+      <td>开发语言：</td>
+      <td>Golang</td>
+    </tr>
+     <tr>
+      <td>Web框架：</td>
+      <td>Beego {{.beegover}}</td>
+    </tr> 
+    <tr>
+      <td>Web Server：</td>
+      <td>Nginx</td>
+    </tr> 
+     <tr>
+      <td>系统维护：</td>
+      <td>{{.developer}}</td>
+    </tr>                  
+  </table>
+</div>
+</div>
+</body>
+</html>

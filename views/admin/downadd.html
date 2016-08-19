@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>添加下载</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/admin.js"></script> 
+<script type="text/javascript">
+function prefixInteger(num, length) {
+  return (num / Math.pow(10, length)).toFixed(length).substr(2);
+}
+var ep = {{.episode}};
+var admindir = '{{.AdminDir}}';
+var mid = {{.movie.Id}};
+var downlist = '{{.downlist}}';
+
+function itemlist(){
+  var obj = $.parseJSON(downlist);
+  $.each(obj,function(i,item){
+    var h = $("#hdtv"+item.ep);
+    var m = $("#mkv"+item.ep);
+    h.val(item.hdtvurl);
+    m.val(item.mkvurl);
+  });
+}
+
+function getep(){
+  var show = "";
+  show=show+'<tr>';
+  show=show+'<td style="font-weight:bold;">集数</td>';
+  show=show+'<td colspan="3" style="font-weight:bold;">下载地址</td>';
+  show=show+'</tr>';   
+  for(var i=0;i<ep;i++)
+  {
+    show=show+'<tr>';
+    show=show+'<td>第'+prefixInteger((i+1),2)+'集</td>';
+    show=show+'<td colspan="3"><form action="'+admindir+'down/save/'+(i+1)+'/" method="post"><table border="0" align="left" cellpadding="0" cellspacing="0" class="down">';
+    show = show+'<tr><td>HD.1024.字幕:</td><td><input type="text" name="hdtv" id="hdtv'+(i+1)+'" style="width:600px" class="dinput" /></td></tr>';
+    //show = show+'<tr><td>MKV.字幕:</td><td><input type="text" name="mkv" style="width:600px" id="mkv'+(i+1)+'" class="dinput" /></td></tr>';
+    show = show+'<tr><td></td><td align="right"><input type="submit" value=" 保存第'+prefixInteger((i+1),2)+'集下载 " class="dbutton bghuang" /> <input type="button" class="dbutton" value=" 返回影片 " onclick="self.location.href=\''+admindir+'movie/list/\'" />  </td></tr>';
+    //show = show+'<tr><td>720P.无字幕:</td><td><input type="text" name="p720" style="width:600px"  class="dinput" /></td></tr>';
+
+    show = show+'</table><input type="hidden" name="mid" value="'+mid+'" /><input type="hidden" name="episode" value="'+ep+'" /></form></td>';
+    show=show+'</tr>';  
+  }
+  $("#downlist").html(show);
+}
+</script>
+</head>
+<body>
+<div id="main">
+<h2>添加/编辑 下载信息</h2>
+<div class="content" style="margin-top:0px;">
+  <table border="0" align="center" cellpadding="0" cellspacing="0" class="add">
+    <tr>
+      <td width="10%">影片名称：</td>
+      <td>{{.movie.Name}}</td>
+      <td>集数</td>
+      <td><input name="episode" type="number" id="episode" readonly="readonly" class="input" style="width:230px" placeholder="10" value="{{.movie.Episode}}" />＊</td>
+    </tr> 
+    <tbody id="downlist">
+      
+    </tbody>  
+    <script type="text/javascript">getep();itemlist();</script>
+  </table>
+</div>
+</div>
+</body>
+</html>

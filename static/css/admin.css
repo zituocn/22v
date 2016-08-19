@@ -1,0 +1,145 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,a,input,button,select,textarea,span,p {
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica,Tahoma, Arial, STXihei,SimSun,'Microsoft YaHei';
+	word-break: break-all;
+	color:#333;
+}
+body{background:#fff;line-height:1;}
+img {border:0; outline:0;}
+ol, ul, li {list-style: none;}
+a img{border:none;}
+h1, h2, h3, h4, h5, h6 {clear: both;font-weight: normal;}
+
+del { text-decoration: line-through;}
+
+a img {	border: none;}
+
+a,a:link {color: #0066cc;	text-decoration:none;}
+a:visited {	color: #743399;}
+a:active,a:hover {	color:#ff4b33;}
+
+
+#login{margin:240px auto;width:482px;height:330px;background:#ECECEC url(/static/img/logo.png) no-repeat center 20px;border:1px solid #ccc;}
+#login .input{outline:0px;border:1px solid #c7c7c7;padding:2px;line-height:28px;height:28px;font-weight:bold;color:#333;font-family:Arial;}
+#login ul{padding:20px 40px 36px 40px;margin-top:60px;}
+#login li{margin:10px 0px 10px 0px;}
+#login li h2{font-size:20px;color:#333;font-weight:700;}
+#login li img{border:2px solid #fff;margin-top:5px;}
+#login .info{color:#C33F3E;font-size:18px;font-weight:700;margin-top:16px;}
+
+#menus{margin:0px auto;}
+#menus h2{font-size:24px;color:#fff;text-align:center;line-height:50px;height:100px; background:#92C83E;}
+#menus h2 span{font-size:16px;}
+#menus ul{margin:2px auto;}
+#menus ul li{font-size:14px;margin:1px; padding-left:65px;line-height:32px;color:#333;display:block;border:1px solid #ccc;}
+#menus ul li:hover{border:1px solid #eee;background:#fff;}
+#menus ul li a{font-size:14px;color:#333;display:block;}
+#menus ul .title{padding-left:26px;font-size:16px;font-weight:bold;display:block;}
+
+
+#main{margin:0 auto;width:100%;}
+#main h2{font-size:26px;color:#fff;line-height:100px; background:#eee;text-align:left;padding-left:26px;}
+#main .content{margin:20px auto;width:96%;}
+#main .content td, #main .content td span{font-size:16px;color:#333; vertical-align:middle;}
+
+#main{margin:0 auto;width:100%;}
+#main h2{font-size:26px;color:#666;line-height:100px; background:#eee;text-align:left;padding-left:26px;}
+#main .content{margin:20px auto;width:96%;}
+#main .content td{font-size:18px;color:#333; vertical-align:middle;}
+
+#main .content .list{border:1px solid #ddd;border-width:1px 0 0 1px;margin-top:10px;width:100%;}
+#main .content .list td{border:1px solid #ddd;border-width:0px 1px 1px 0px;}
+#main .content .list td,#main .content .list th{font-size:14px;padding:2px;line-height:26px;}
+#main .content .list tr:hover{background:#efefef;}
+#main .content .list th{font-weight:bold;color:#555;border:1px solid #ddd;border-width:0px 1px 1px 0px;}
+
+#main .content .add{;margin-top:10px;width:100%;}
+#main .content .add td{font-size:14px;}
+#main .content .add td,#main .content .list th{font-size:14px;padding:2px;line-height:26px;}
+#main .content .add th{font-weight:bold;color:#555;}
+
+.num{font-size:10px;font-family:Tahoma;color:#999;}
+.w,.w a{color:#999;}
+.r,.r a{color:#ff3300;}
+.hui{color:#666;}
+
+.detail td{line-height:26px;height:26px;padding:3px;color:#666;font-size:14px;}
+.detail th{line-height:26px;height:26px;color:#3366FF;font-size:16px; vertical-align:middle;font-weight:normal;}
+.detail td div{font-size:14px;color:#666; vertical-align:middle;}
+.detail td a{font-size:14px;}
+.detail td span{font-size:14px;}
+.detail td a:hover{color:#ff3300;}
+.detail tr{background:#fff;}
+.detail  tr:hover{background:#FFFF66;}
+
+.bg{background:#ccc;}
+
+.page{margin-left:8px;}
+.page,.page a,.page span,.page div{font-size:16px;font-family:Tahoma;}
+
+.down{background:#efefef;font-size:12px;}
+.down td{font-size:12px;}
+
+#main .content .input{border:1px solid #c7c7c7;padding:2px;line-height:26px;height:26px;color:#333;font-size:14px;outline:0px;}
+#main .content .dinput{border:1px solid #c7c7c7;padding:1px;line-height:22x;height:22px;color:#333;font-size:12px;outline:0px;}
+#main .content .select{padding:2px;font-size:14px;outline:0px;}
+#main .content textarea{outline:0px;}
+
+.i_selectbox{height:32px;position:relative;font-size:14px;color:#333;} 
+.i_selectbox .i_currentselected{font-size:14px;width:260px;height:32px;background:url(../images/bg-select.gif) right top no-repeat;border:1px solid #c7c7c7;text-indent:10px;line-height:32px;cursor:pointer;color:#333;}
+.i_selectbox .i_selectoption{overflow-x:hidden;overflow-y:auto;position:absolute;left:-5px;top:-2px;padding:5px;background-color:#f9f9f9;;border:1px solid #999;} 
+.i_selectbox .i_selectoption dt{height:24px;background-color:#eee;text-indent:5px;font-style:italic;color:#555;line-height:24px;} 
+.i_selectbox .i_selectoption dd{height:30px;cursor:pointer;text-indent:10px;line-height:30px;font-size:14px;color:#333;} 
+.i_selectbox .i_selectoption dd:hover{background-color:#ddd;color:#333;}
+.i_selectbox .i_selectoption dd.selected{background-color:#555;color:#fff;}
+
+.button{ 
+	background:#888;
+	color:#fff;
+	height:30px;
+	border:0px solid #000;
+	cursor:pointer;
+	margin-top:3px;
+	
+	padding:3px 8px 3px 8px;
+	font-size:14px;    
+   }
+.dbutton{ 
+	background:#888;
+	color:#fff;
+	height:26px;
+	border:0px solid #000;
+	cursor:pointer;
+	margin-top:3px;
+	padding:3px 8px 3px 8px;
+	font-size:12px;    
+   }
+.bgred{background:#ff0000;}
+.bghuang{background:#f87201;}
+
+.showmessage{margin:100px auto;border:1px solid #ddd;width:60%;}
+.showmessage td{padding:20px;}
+
+.select,.select label{font-size:14px;}
+.cz{font-size:14px;}
+
+.context{width:98%;height:400px;visibility:hidden;}
+.error{font-size:14px;color:#ff3300;}
+
+#pagenavi {margin:10px 0px 10px 6px;width:98%;float:left; }
+#pagenavi .page-numbers { color:#333;  border: 1px solid #ccc;margin:0 5px 0 5px;line-height:27px;padding:5px 10px 5px 10px;float:left;}
+#pagenavi a:hover { color:#333; text-decoration:none; background:#fff;}
+#pagenavi a{color:#333;}
+#pagenavi span.current { color:#ff3300;font-weight:bold; background:#fff;}
+#pagenavi a:active { position:relative; }
+.page_navi span.dots { background:none; border:none;}
+
+.pager{float:right;text-align: right;clear:both;margin:10px 0 10px 0;font-size:13px;}
+.pager span,.pager a{display: block;float:left;margin:0 2px 0 2px;border:1px solid #ddd;padding:1px 5px 1px 5px;background: #fff;min-width:16px;text-align: center;font-size:13px;}
+.pager a.next{margin:0px;}
+.pager a.tab{background:#ffcc00;color:#fff;}
+.pager a:hover{background:#ffcc00;color:#fff;}
+.upload{margin:0px;}
+input,button,select,textarea{ outline:none;}
+textarea{resize:none;}

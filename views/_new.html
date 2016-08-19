@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>新美剧_新剧推荐_最新美剧迅雷下载|爱美剧</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="最新美剧,新美剧推荐,2016新剧推荐" />
+<meta name="Description" content="此频道提供最新美剧推荐、海报、剧情介绍等，为关注新美剧的美剧迷们服务。" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+ {{template "header" .}}
+	<div class="box">
+		<div class="list">
+			<div class="location">现在的位置：<a href="/">首页</a> > <a href="/new/">新剧推荐</a></div>
+			<div class="movie">
+				<ul>
+					<li class="title">新剧推荐</li>
+					{{range .list}}<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>
+			</div>
+			<div class="panel">
+				<ul>
+					<li class="title">热门美剧</li>
+					{{range .hostlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>				
+				<ul>
+					<li class="title">随便看看</li>
+					{{range .randlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>		
+			</div>
+		</div>
+	</div>
+	{{template "footer"}}			
+</body>
+</html>

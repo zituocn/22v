@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>影片列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+var cid = "{{.cid}}";
+var week = "{{.week}}";
+var done = "{{.done}}"
+var count = {{.count}};
+var status = "{{.status}}";
+var admindir = "{{$.admindir}}";
+$(function(){
+  $("#cid").val(cid);
+  $("#week").val(week);
+  $("#done").val(done);
+  $("#status").val(status);
+  if(count==0){
+     $("#show").hide();
+     $("#nodata").show();
+   }
+});
+
+function isOverdown(a,b,c)
+{
+  var show = "";
+  if(c>0){
+    show = "<span style=\"color:#aaa;font-size:14px;\">已完结</span>"
+  }else
+  {
+    if(a!=b)
+      show = "未完结";
+    else
+      show = "<span style=\"color:#aaa;font-size:14px;\">已完结</span>";
+  }
+  document.writeln(show);
+}
+function isAdddown(a,b,id){
+   var show = "";
+  if(a!=b)
+    show = "<a href=\""+admindir+"down/add/"+id+"/\">添加下载</a>";
+  else
+    show = "<a href=\""+admindir+"/down/add/"+id+"/\" style=\"color:#666;\">修改下载</a>";
+  document.writeln(show); 
+}
+function OverDownStar(a,b,c){
+  var show = "";
+  if(c>0){ //✮✭★✩✫☆✰
+    show = "<span style=\"color:#ff3300;font-size:18px;\">✭<span>"
+  }else
+  {
+    if(a==b)
+      show = "<span style=\"color:#ff3300;font-size:18px;\">✭<span>"
+  }
+  document.writeln(show);  
+}
+
+</script>
+</head>
+<body>
+<div id="main">
+<h2>影片列表</h2>
+<div class="content" style="margin-top:6px;">
+<form method="post">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+	  <tr>
+		<td height="20">
+    <select name="cid" id="cid" class="select">
+      <option selected="selected" value="0">==所有分类==</option>
+      {{range .classlist}}
+      <option value="{{.Id}}">{{.Name}}</option>
+      {{end}}
+    </select>
+    <select name="week" id="week" class="select">
+      <option selected="selected" value="0">==选择星期==</option>
+      <option value="1">星期一</option>
+      <option value="2">星期二</option>
+      <option value="3">星期三</option>
+      <option value="4">星期四</option>
+      <option value="5">星期五</option>
+      <option value="6">星期六</option>
+      <option value="7">星期七</option>
+    </select>
+    <select name="done" id="done" class="select">
+      <option value="0" selected="selected">==完结?==</option>
+      <option value="1">未完结</option>
+      <option value="2">已完结</option>
+    </select>
+      <select name="status" id="status" class="select">
+      <option value="-10" selected="selected">==所有影片==</option>
+      <option value="0">普通状态</option>
+      <option value="1">推荐到热门</option>
+       <option value="10">推荐到新剧</option>     
+      <option value="-1">隐藏状态</option>
+    </select>  
+    <input type="text" name="keyword" id="keyword" placeholder="影片名" class="input" value="{{.keyword}}" />
+    <input type="submit" name="enter" value=" 查询影片 " id="enter" class="button bghuang" />
+    </td>
+		</tr>
+	</table>
+  <table width="100%" border="0" align="left" cellpadding="0" cellspacing="0"  class="list">
+    <tr>
+      <th width="33%" height="35" bgcolor="#ADE2F2"><div align="left" style="margin-left:2px;">片名</div></th>
+      <th width="7%"  bgcolor="#ADE2F2">修改</th>  
+      <th width="5%" bgcolor="#ADE2F2"><div align="center">星期</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">首播日期</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">类型</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">责编</div></th>
+      <th width="6%" bgcolor="#ADE2F2"><div align="center">点击</div></th>
+      <th width="7%" bgcolor="#ADE2F2"><div align="center">已有/共集</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">状态</div></th>
+      <th width="8%" bgcolor="#ADE2F2"><div align="center">添加下载</div></th>
+    </tr>
+	<tbody id="show">
+  {{range .list}}
+    <tr>
+      <td height="30"><a href="/v/{{.Id}}/" target="_blank" style="margin-left:5px;">{{.Name}}({{.Ename}})</a><script type="text/javascript">OverDownStar({{.Episode}},{{.Hasepisode}},{{.Isend}});</script></td>
+      <td><div align="center"><a href="{{$.admindir}}movie/edit/{{.Id}}/">修改</a></div></td>
+      <td><div align="center">{{.Updateweek}}</div></td>
+      <td><div align="center">{{.Playdate}}</div></td>
+      <td><div align="center">{{.Cid|getclassname}}</div></td>
+      <td><div align="center">{{.Editor}}</div></td>
+      <td><div align="center">{{.Views}}</div></td>
+      <td><div align="center">{{.Hasepisode}} / {{.Episode}}</div></td>
+      <td><div align="center"><script>isOverdown({{.Episode}},{{.Hasepisode}},{{.Isend}});</script></div></td>
+      <td><div align="center"><script>isAdddown({{.Episode}},{{.Hasepisode}},{{.Id}});</script></div></td>
+    </tr>
+    {{end}}
+  </tbody>
+  <tbody id="nodata" style="display:none;">
+    <td  colspan="10" bgcolor="#ffffff">没有查询结果...</td>
+  </tbody>
+    <tr>
+      <td height="30" colspan="10" bgcolor="#ffffff" align="left">
+      <div class="pager">
+       {{str2html .pager}}
+        </div>
+       </td>
+    </tr>
+  </table>
+  </form>
+</div>
+</div>
+</body>
+</html>

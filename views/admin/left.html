@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background:#ccc;">
+<div id="menus">
+<h2>管理菜单
+<br />
+<span>{{.username}}</span>
+</h2>
+<ul>
+<li class="title">首页操作</li>
+<li><a href="/" target="_blank">网站首页</a></li>
+<li class="title">影片管理</li>
+<li><a href="movie/add" target="right">添加影片</a></li>
+<li><a href="movie/list" target="right">影片列表</a></li>
+<li class="title">关系管理</li>
+<li><a href="relation/add" target="right">添加关系</a></li>
+<li><a href="relation/list" target="right">关系列表</a></li>
+<li class="title">资讯管理</li>
+<li><a href="page/add" target="right">添加资讯</a></li>
+<li><a href="page/list" target="right">资讯列表</a></li>
+<li class="title">推荐管理</li>
+<li><a href="recommend/add" target="right">添加推荐</a></li>
+<li><a href="recommend/list" target="right">推荐列表</a></li>
+<li class="title">系统功能</li>
+<li><a href="user/changepassword" target="right">更新密码</a></li>
+<li><a href="logout">退出平台..</a></li>
+</ul>
+</div>
+</body>
+</html>

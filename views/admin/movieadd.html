@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>添加影片</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/admin.js"></script> 
+<script type="text/javascript">
+var cid = {{.info.Cid}};
+var status = {{.info.Status}};
+var ckcid = {{.ck_cid}};
+var isnew = {{.info.Isnew}};
+function setphoto(obj,img){
+  $("#"+obj).val(img);
+  $("#show"+obj).attr("target","_blank");
+  $("#show"+obj).attr("href",img);
+} 
+$(function(){
+  if(isnew>0){
+    $("#isnew").attr("checked",true);
+  }else{
+    $("#isnew").attr("checked",false);
+  }
+  var img = $("#photo").val();
+  if(img.length>0){
+    $("#showphoto").attr("target","_blank");
+    $("#showphoto").attr("href",img);
+  } 
+  var img1 = $("#iphoto").val();
+  if(img1.length>0){
+    $("#showiphoto").attr("target","_blank");
+    $("#showiphoto").attr("href",img1);
+  }   
+});
+</script>
+</head>
+<body>
+<form method="post" id="form1" action="{{.AdminDir}}movie/save" onsubmit="return checkpost();">
+<div id="main">
+<h2>添加/编辑 影片信息</h2>
+<div class="content" style="margin-top:0px;">
+  <table  border="0" align="center" cellpadding="0" cellspacing="0" class="add">
+    <tr>
+      <td width="10%">影片分类：</td>
+      <td>
+	   <select name="cid" id="cid" class="select">
+      <option selected="selected" value="0">==选择分类==</option>
+      {{range .classlist}}
+      <option value="{{.Id}}">{{.Name}}</option>
+      {{end}}
+    </select>
+     <input type="checkbox" name="isnew" value="1" id="isnew" style="margin-left:10px;" />
+      <label for="isnew">是否新剧推荐</label> 
+    </td>
+    <td>集数</td>
+    <td><input name="episode" type="number" id="episode" class="input" style="width:230px" placeholder="10" value="{{.info.Episode}}" />＊</td>
+    </tr>
+    <tr>
+      <td>中文名</td>
+      <td width="30%"><input name="name" type="text" id="name" class="input" value="{{.info.Name}}" style="width:230px" placeholder="如：越狱第二季" />＊</td>
+      <td width="10%">英文名</td>
+      <td width="50%"><input name="ename" type="text" id="ename" class="input"  value="{{.info.Ename}}" style="width:230px" placeholder="如：Prison Break" />＊
+      </td>
+    </tr>   
+    <tr>
+      <td>主演</td>
+      <td><input name="actor" type="text" id="actor" class="input" style="width:230px" value="{{.info.Actor}}" placeholder="多个用,分开" />＊</td>
+      <td>导演</td>
+      <td><input name="director" type="text" id="director" class="input" style="width:230px" value="{{.info.Director}}" placeholder="多个用,分开"/>＊</td>      
+    </tr>
+    <tr>
+      <td>更新星期</td>
+      <td><input name="updateweek" type="number" id="updateweek" class="input" style="width:230px" value="{{.info.Updateweek}}" placeholder="3"/>＊</td>
+      <td>开播时间</td>
+      <td><input name="playdate" type="text" id="playdate" class="input" style="width:230px" value="{{.info.Playdate}}" placeholder="2016-10-1"/>＊</td>      
+    </tr>    
+     <tr>
+      <td>编剧</td>
+      <td><input name="writer" type="text" id="writer" class="input" style="width:230px" placeholder="多个用,分开" value="{{.info.Writer}}"/></td>
+      <td>语言</td>
+      <td><input name="language" type="text" id="language" class="input" value="英语" placeholder="多个用,分开" value="{{.info.Language}}" style="width:230px"/></td></tr>                 
+    <tr>
+      <td valign="top">内容 ＊</td>
+      <td valign="top" colspan="3"><textarea id="content" placeholder="内容简介,文字不宜过长，回车分段..." name="content" style="width:70%;height:200px;">{{.info.Content}}</textarea>  </td>
+    </tr>
+     <tr>
+      <td>海报地址</td>
+      <td colspan="3"><input name="photo" type="text" id="photo" class="input" placeholder="海报图片地址..." value="{{.info.Photo}}" style="width:700px"/>*
+      <a id="showphoto">预览图片</a>
+      </td>
+    </tr>
+       <tr>
+      <td>上传海报</td>
+      <td colspan="3"><iframe src="{{.AdminDir}}upload/add?obj=photo" frameborder="no" scrolling="no" border="0" style="margin-left:10px;width:500px;border:0px;height:32px;"></iframe>
+      </td>
+    </tr>  
+     <tr>
+      <td>首页图片</td>
+      <td colspan="3"><input name="iphoto" type="text" value="{{.info.Iphoto}}" id="iphoto" class="input" placeholder="首页轮播的展示图片,仅在推荐到首页时使用..." style="width:700px"/>(图片尺寸：470*280) <a id="showiphoto">预览图片</a></td>
+      
+    </tr> 
+      <tr>
+      <td>上传首页图片</td>
+      <td colspan="3"><iframe src="{{.AdminDir}}upload/add?obj=iphoto" frameborder="no" scrolling="no" border="0" style="margin-left:10px;width:500px;border:0px;height:32px;"></iframe>  
+      </td>
+    </tr>   
+     <tr>
+      <td>SEO标题</td>
+      <td colspan="3"><input name="title" type="text" id="title" class="input" style="width:400px" value="{{.info.Title}}" /> (可手动修改)</td>
+    </tr>
+     <tr>
+      <td>SEO关键字</td>
+      <td colspan="3"><input name="keywords" type="text" id="keywords" placeholder="多个用,分开" class="input" value="{{.info.Keywords}}" style="width:400px"/> (可手动修改)</td>
+    </tr>
+      <tr>
+      <td>SEO页面介绍</td>
+      <td colspan="3"><input name="description" type="text" id="description" class="input" style="width:700px" value="{{.info.Description}}" /> (可手动修改)</td>
+    </tr>           
+    <tr>
+      <td valign="top">状态：</td>
+      <td valign="top" colspan="3">
+      <select name="status" id="status" class="select">
+           <option value="0" selected="selected">==状态==</option>
+           <option value="-1">前台隐藏</option>
+           <option value="0">正常状态</option>
+           <option value="1">推荐首页图片</option>
+         </select></td>
+    </tr>  
+    <tr>
+      <td></td>
+      <td colspan="3">
+      <input type="hidden" name="id" value="{{.info.Id}}" />
+      <input type="submit" name="enter" value=" 保存影片 " id="enter" class="button bghuang" /> <input type="button" class="button" value=" 返回列表 "  onclick="self.location.href='{{.AdminDir}}movie/list';"/></td>
+    </tr>
+  </table>
+</div>
+</div>
+</form>
+<script type="text/javascript">
+  $(function(){
+    if(cid>0)
+    {
+      $("#cid").val(cid);
+    }
+    else
+    {
+      if(ckcid>0)
+        $("#cid").val(ckcid);
+    }
+    $("#status").val(status);
+
+    $("#ename").change(function(){
+          var name = $("#name");
+          var ename = $("#ename");
+          var title = $("#title");
+          var str = name.val()+"("+ename.val()+")迅雷下载";
+          title.val(str);
+
+          var description = $("#description");
+          var str = "提供美剧："+name.val()+"("+ename.val()+")影片介绍，高清海报、迅雷高速下载等..."
+          description.val(str);
+    });
+    $("#name").change(function(){
+          var name = $("#name");
+          var ename = $("#ename");
+          var title = $("#title");
+          var str = name.val()+"("+ename.val()+")迅雷下载";
+          title.val(str);
+
+          var description = $("#description");
+          var str = "提供美剧："+name.val()+"("+ename.val()+")影片介绍，高清海报、迅雷高速下载等..."  
+          description.val(str);        
+    });    
+  })
+</script>
+</body>
+</html>

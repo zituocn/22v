@@ -1,0 +1,46 @@
+{{define "header"}}
+	<script type="text/javascript">
+		function search(){
+			var key = $("#key");
+			if(key.val()==""||$.trim(key.val()).length==0){
+				return false;
+			}else{
+				this.location.href="/search/"+$.trim(key.val())+"/";
+			}
+			return false;
+		}
+	</script>
+	<div class="box">
+		<div id="topbar">
+			<div class="logo"><a href="/" class="home" target="_self" title="爱美剧首页"><span class="logo">爱美剧</span></a></div>
+			<div class="search">
+				<form action="/search/" id="searchform" method="get" onsubmit="return search();">
+				<ul>
+					<li><input type="text" name="key" id="key" class="st" placeholder="影片名称..." /><button type="submit" class="btn">开始搜索</button></li>
+					<li class="keywords">热门搜索:
+						{{str2html .hotkeywords}}
+					</li>
+				</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="box">
+		<div id="nav">
+			<a href="/" target="_self" class="home">网站首页</a>
+			<a href="/m/100/" class="bold" id="c100"  target="_self">美剧下载</a>
+			<a href="/m/1/" id="c1" target="_self">动作</a>
+			<a href="/m/2/" id="c2" target="_self">科幻魔幻</a>
+			<a href="/m/3/" id="c3" target="_self">情景喜剧</a>	
+			<a href="/m/4/" id="c4" target="_self">罪案碟战</a>
+			<a href="/m/5/" id="c5" target="_self">灵异惊悚</a>
+			<a href="/m/6/" id="c6" target="_self">律政医务剧情</a>
+			<a href="/m/200/" id="c200" target="_self">美剧推荐</a>
+			<a href="/news/" target="_self">美剧资讯</a>		
+		</div>
+		<div id="subnav">
+			{{str2html .subnav}}
+		</div>
+	</div>
+	{{end}}

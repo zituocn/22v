@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{{.cinfo.Title}}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{{.cinfo.Keywords}}" />
+<meta name="Description" content="{{.cinfo.Description}}" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var cid = '{{.cinfo.Id}}';
+		var obj = $("#c"+cid);
+		obj.attr("class","tab");
+	});
+</script>
+</head>
+<body>
+ {{template "header" .}}
+	<div class="box">
+		<div class="list">
+			<div class="location">现在的位置：<a href="/">首页</a> > <a href="/m/100/">美剧下载</a> > <a href="/m/{{.cinfo.Id}}/">{{.cinfo.Name}}</a> > 文章列表</div>
+			<div class="movie">
+				<ul>
+					<li class="title">{{.cinfo.Name}}</li>
+					{{range .list}}<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>
+				<div class="clear"></div>
+				<div class="pager">
+					{{str2html .pager}}
+				</div>																							
+			</div>
+			<div class="panel">
+				<ul>
+					<li class="title">{{.cinfo.Id|getclassname}}热门美剧</li>
+					{{range .hostlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>				
+				<ul>
+					<li class="title">随便看看</li>
+					{{range .randlist}}
+					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+				</ul>		
+			</div>
+		</div>
+	</div>
+	{{template "footer"}}			
+</body>
+</html>

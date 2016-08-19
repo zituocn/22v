@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>VMovie管理登录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body{background:#888 repeat left center;line-height:1;}
+</style>
+</head>
+<body>
+{{.Success}}
+<form method="post" id="form1">
+<div id="login">
+	<ul>
+		<li><h2>帐号</h2></li>
+		<li><input name="username" type="text" id="tname" class="input" value="{{.username}}" style="width:380px" placeholder="登录帐号" autocomplete="off" />
+        </li>
+		<li><h2>密码</h2></li>
+		<li><input name="password" type="password" id="tpwd" class="input" style="width:380px" placeholder="登录密码" autocomplete="off" /></li>
+		<li>
+        <input type="image" name="ImageButton1" id="ImageButton1" src="/static/img/login_button.gif" />
+        </li>
+		<li><span id="info" class="info">{{.info}}</span></li>
+	</ul>
+</div>
+</form>
+</body>
+</html>

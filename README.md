@@ -8,6 +8,9 @@ golang 1.6+
 ###数据库
 `create database vmovie`
 
+###数据库连接配置
+`vi conf/app.conf`
+
 ### 运行
 `go get github.com/zituocn/22v`  
 `go build`  
@@ -16,7 +19,9 @@ golang 1.6+
 
 ###后台登录
 `http://ip:port/vvadmin/`  
+`app.conf中可配置后台目录地址`
 请手动向user_info表中写入管理员登录帐号/密码的记录
+
 
 
 ###网站地址

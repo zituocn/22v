@@ -25,7 +25,7 @@ func init() {
 	beego.Router("/22v.net.html", &controllers.IndexHandle{}, "*:Start")
 
 	///error handel
-	beego.ErrorController(&controllers.HttpErrorHandel{})
+	beego.ErrorController(&controllers.HttpErrorHandle{})
 
 	//api json
 
@@ -51,39 +51,39 @@ func init() {
 		admindir = "admin"
 	}
 	ns := beego.NewNamespace(admindir,
-		beego.NSRouter("/", &admin.LoginHandel{}, "*:Login"),
-		beego.NSRouter("/logout", &admin.LoginHandel{}, "*:Logout"),
-		beego.NSRouter("/main", &admin.IndexHandel{}, "*:Main"),
-		beego.NSRouter("/left", &admin.IndexHandel{}, "*:Left"),
-		beego.NSRouter("/right", &admin.IndexHandel{}, "*:Right"),
+		beego.NSRouter("/", &admin.LoginHandle{}, "*:Login"),
+		beego.NSRouter("/logout", &admin.LoginHandle{}, "*:Logout"),
+		beego.NSRouter("/main", &admin.IndexHandle{}, "*:Main"),
+		beego.NSRouter("/left", &admin.IndexHandle{}, "*:Left"),
+		beego.NSRouter("/right", &admin.IndexHandle{}, "*:Right"),
 
 		//影片管理
-		beego.NSRouter("movie/add", &admin.MovieHandel{}, "*:Add"),
-		beego.NSRouter("movie/edit/:id:int/", &admin.MovieHandel{}, "*:Edit"),
-		beego.NSRouter("movie/save", &admin.MovieHandel{}, "post:Save"),
-		beego.NSRouter("movie/list", &admin.MovieHandel{}, "*:List"),
-		beego.NSRouter("movie/list/:page:int/", &admin.MovieHandel{}, "*:List"),
+		beego.NSRouter("movie/add", &admin.MovieHandle{}, "*:Add"),
+		beego.NSRouter("movie/edit/:id:int/", &admin.MovieHandle{}, "*:Edit"),
+		beego.NSRouter("movie/save", &admin.MovieHandle{}, "post:Save"),
+		beego.NSRouter("movie/list", &admin.MovieHandle{}, "*:List"),
+		beego.NSRouter("movie/list/:page:int/", &admin.MovieHandle{}, "*:List"),
 
 		//下载管理
-		beego.NSRouter("down/add/:mid:int/", &admin.DownaddrHandel{}, "*:Add"),
-		beego.NSRouter("down/list", &admin.DownaddrHandel{}, "*:List"),
-		beego.NSRouter("down/save/:ep:int/", &admin.DownaddrHandel{}, "*:Save"),
+		beego.NSRouter("down/add/:mid:int/", &admin.DownaddrHandle{}, "*:Add"),
+		beego.NSRouter("down/list", &admin.DownaddrHandle{}, "*:List"),
+		beego.NSRouter("down/save/:ep:int/", &admin.DownaddrHandle{}, "*:Save"),
 
 		//图片上传管理
 		beego.NSRouter("upload/add", &admin.UploadHandle{}, "*:UpLoadPage"),
 		beego.NSRouter("upload/qiniusave", &admin.UploadHandle{}, "*:QiniuUpLoadFile"),
 
 		//用户
-		beego.NSRouter("user/changepassword", &admin.UserHandel{}, "*:ChangePass"),
-		beego.NSRouter("user/savepass", &admin.UserHandel{}, "*:SavePass"),
+		beego.NSRouter("user/changepassword", &admin.UserHandle{}, "*:ChangePass"),
+		beego.NSRouter("user/savepass", &admin.UserHandle{}, "*:SavePass"),
 
 		//影片关系
-		beego.NSRouter("relation/add", &admin.RelationHandel{}, "*:Add"),
-		beego.NSRouter("relation/save", &admin.RelationHandel{}, "*:Save"),
-		beego.NSRouter("relation/list", &admin.RelationHandel{}, "*:List"),
-		beego.NSRouter("relation/list/:page:int/", &admin.RelationHandel{}, "*:List"),
-		beego.NSRouter("relation/detail/:id:int/", &admin.RelationHandel{}, "*:Detail"),
-		beego.NSRouter("relation/delete/:id:int/", &admin.RelationHandel{}, "*:Delete"),
+		beego.NSRouter("relation/add", &admin.RelationHandle{}, "*:Add"),
+		beego.NSRouter("relation/save", &admin.RelationHandle{}, "*:Save"),
+		beego.NSRouter("relation/list", &admin.RelationHandle{}, "*:List"),
+		beego.NSRouter("relation/list/:page:int/", &admin.RelationHandle{}, "*:List"),
+		beego.NSRouter("relation/detail/:id:int/", &admin.RelationHandle{}, "*:Detail"),
+		beego.NSRouter("relation/delete/:id:int/", &admin.RelationHandle{}, "*:Delete"),
 
 		//资讯管理
 		beego.NSRouter("page/add", &admin.PageHandle{}, "*:Add"),

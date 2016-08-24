@@ -10,24 +10,24 @@ import (
 	"time"
 )
 
-type IndexHandel struct {
+type IndexHandle struct {
 	baseController
 }
 
-type LoginHandel struct {
+type LoginHandle struct {
 	baseController
 }
 
-func (this *IndexHandel) Main() {
+func (this *IndexHandle) Main() {
 	this.TplName = "admin/main.html"
 }
 
-func (this *IndexHandel) Left() {
+func (this *IndexHandle) Left() {
 	this.Data["username"] = this.username
 	this.TplName = "admin/left.html"
 }
 
-func (this *IndexHandel) Right() {
+func (this *IndexHandle) Right() {
 	this.Data["hostname"], _ = os.Hostname()
 	this.Data["gover"] = runtime.Version()
 	this.Data["os"] = runtime.GOOS
@@ -48,7 +48,7 @@ func (this *IndexHandel) Right() {
 }
 
 //login post
-func (this *LoginHandel) Login() {
+func (this *LoginHandle) Login() {
 
 	if this.IsPost() {
 		username := strings.TrimSpace(this.GetString("username"))
@@ -78,7 +78,7 @@ func (this *LoginHandel) Login() {
 }
 
 //logout
-func (this *LoginHandel) Logout() {
+func (this *LoginHandle) Logout() {
 	this.Ctx.SetCookie("auth", "")
 	this.Ctx.WriteString("<script>top.location.href='" + this.admindir + "'</script>")
 }

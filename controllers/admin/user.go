@@ -5,19 +5,19 @@ import (
 	"strings"
 )
 
-type UserHandel struct {
+type UserHandle struct {
 	baseController
 }
 
 //更新密码
-func (this *UserHandel) ChangePass() {
+func (this *UserHandle) ChangePass() {
 
 	this.Data["AdminDir"] = this.admindir
 	this.TplName = "admin/changepassword.html"
 
 }
 
-func (this *UserHandel) SavePass() {
+func (this *UserHandle) SavePass() {
 	var (
 		ypass   string
 		newpass string

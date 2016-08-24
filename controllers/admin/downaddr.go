@@ -9,12 +9,12 @@ import (
 	"fmt"
 )
 
-type DownaddrHandel struct {
+type DownaddrHandle struct {
 	baseController
 }
 
 //add downaddr page
-func (this *DownaddrHandel) Add() {
+func (this *DownaddrHandle) Add() {
 	var (
 		mid      int64
 		movie    models.MovieInfo
@@ -46,7 +46,7 @@ func (this *DownaddrHandel) Add() {
 }
 
 //保存下载 post
-func (this *DownaddrHandel) Save() {
+func (this *DownaddrHandle) Save() {
 	var (
 		ep      int64
 		mid     int64
@@ -124,6 +124,6 @@ func (this *DownaddrHandel) Save() {
 }
 
 //list down
-func (this *DownaddrHandel) List() {
+func (this *DownaddrHandle) List() {
 	this.TplName = "admin/downlist.html"
 }

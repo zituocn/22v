@@ -8,7 +8,7 @@ import (
 	//"fmt"
 )
 
-type RelationHandel struct {
+type RelationHandle struct {
 	baseController
 }
 
@@ -17,7 +17,7 @@ type ErrorInfo struct {
 	Msg  string
 }
 
-func (this *RelationHandel) Delete() {
+func (this *RelationHandle) Delete() {
 	var (
 		id    int64
 		info  models.RelationInfo
@@ -44,7 +44,7 @@ func (this *RelationHandel) Delete() {
 	this.ServeJSON()
 }
 
-func (this *RelationHandel) Detail() {
+func (this *RelationHandle) Detail() {
 	var (
 		id       int64
 		page     int64
@@ -106,7 +106,7 @@ func (this *RelationHandel) Detail() {
 }
 
 ///影片关系列表
-func (this *RelationHandel) List() {
+func (this *RelationHandle) List() {
 	var (
 		page     int64
 		pagesize int64 = 12
@@ -141,7 +141,7 @@ func (this *RelationHandel) List() {
 }
 
 //后台保存关系
-func (this *RelationHandel) Save() {
+func (this *RelationHandle) Save() {
 	var (
 		mids  string
 		name  string
@@ -179,7 +179,7 @@ func (this *RelationHandel) Save() {
 }
 
 //add page
-func (this *RelationHandel) Add() {
+func (this *RelationHandle) Add() {
 	//所有影片分类
 	var classlist []*models.MovieClassInfo
 	var movieclass models.MovieClassInfo

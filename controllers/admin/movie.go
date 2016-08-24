@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-type MovieHandel struct {
+type MovieHandle struct {
 	baseController
 }
 
 //add page
-func (this *MovieHandel) Add() {
+func (this *MovieHandle) Add() {
 	//所有影片分类
 	var classlist []*models.MovieClassInfo
 	var movieclass models.MovieClassInfo
@@ -23,7 +23,7 @@ func (this *MovieHandel) Add() {
 }
 
 //edit page
-func (this *MovieHandel) Edit() {
+func (this *MovieHandle) Edit() {
 	var (
 		id   int64
 		info models.MovieInfo
@@ -52,7 +52,7 @@ func (this *MovieHandel) Edit() {
 }
 
 //list page
-func (this *MovieHandel) List() {
+func (this *MovieHandle) List() {
 
 	//所有影片分类
 	var classlist []*models.MovieClassInfo
@@ -129,7 +129,7 @@ func (this *MovieHandel) List() {
 }
 
 //save post
-func (this *MovieHandel) Save() {
+func (this *MovieHandle) Save() {
 	var (
 		id       int64
 		name     string

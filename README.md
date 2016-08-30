@@ -11,9 +11,10 @@ golang 1.6+
 ###数据库连接配置
 `vi conf/app.conf`
 
-### 运行
-`go get github.com/zituocn/22v`  
-`go build`  
+### 安装及运行
+`go get github.com/zituocn/22v` 
+`更改22v目录为VMovie` 
+`go build` 或 `bee run`  
 `./22v`  
 会自动建表
 

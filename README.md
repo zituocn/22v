@@ -1,9 +1,10 @@
 # VMovie
 22v.net 的网站源代码，使用beego 1.6.1开发，golang 1.6编译 
+最新版已经使用golang 1.7/beego 1.7编译
 
 ###环境
 mysql  
-golang 1.6+ 
+golang 1.6+ /golang 1.7
 
 ###数据库
 `create database vmovie`
@@ -12,9 +13,9 @@ golang 1.6+
 `vi conf/app.conf`
 
 ### 安装及运行
-`go get github.com/zituocn/22v` 
-`更改22v目录为VMovie` 
-`go build` 或 `bee run`  
+`go get github.com/zituocn/22v`	
+`更改22v目录为VMovie`	
+`go build` 或 `bee run`	
 `./22v`  
 会自动建表
 

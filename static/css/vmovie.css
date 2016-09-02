@@ -1,7 +1,7 @@
 body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,a,input,button,select,textarea,span,p {
 	margin: 0px;
 	padding: 0px;
-	font-family: Helvetica,Arial,Tahoma,STXihei,SimSun,'Microsoft YaHei';
+	font-family: 'Microsoft YaHei',Helvetica,Arial,Tahoma,STXihei,SimSun;
 	word-break: break-all;
 	color:#333;
 	font-size:14px;

@@ -25,7 +25,6 @@
 					{{str2html .info.Content}}
 					</p>
 					{{str2html .rmlist}}
-					{{str2html (GetIPhoto .info.Iphoto .info.Title)}}	
 					<p><img src="{{.info.Photo}}?watermark/2/text/54ix576O5YmnIHwgMjJWLk5FVA==/font/5b6u6L2v6ZuF6buR/fontsize/360/fill/I0NDQ0NDQw==/dissolve/100/gravity/South/dy/10" alt="{{.info.Name}}海报" /></p>
 					<p>语言：{{.info.Language}} 类型：<a href="/m/{{.info.Cid}}/" target="_blank">{{.info.Cid|getclassname}}</a> 
 					<br />主演：{{.info.Actor}}

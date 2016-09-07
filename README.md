@@ -27,7 +27,7 @@ golang 1.6+ /golang 1.7
 
 
 ###网站地址
-https://22v.net
+http://22v.net
 
 ###手机版
-https://m.22v.net
+http://m.22v.net

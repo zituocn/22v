@@ -281,9 +281,9 @@ a.bold{font-weight:bold;}
 .pageinfo .movie{line-height:24px;}
 .pageinfo .movie h3{font-weight: bold;font-size:20px;text-align:center;padding:10px 5px 15px 5px;}
 .pageinfo .movie .about{font-size:13px;color:#888;text-align:center;border-bottom:1px solid #ddd;padding:0 0 5px 0;}
-.pageinfo .movie .about a{color:#497fd8;}
-.pageinfo .movie .pagetext{line-height:24px;padding:12px;min-height:300px;}
-.pageinfo .movie .pagetext p{margin:10px 0 10px 0;text-indent:2em;}
+.pageinfo .movie .about a{color:#497fd8;font-size:13px;}
+.pageinfo .movie .pagetext{line-height:25px;padding:12px;min-height:300px;font-size:16px;}
+.pageinfo .movie .pagetext p{margin:10px 0 10px 0;text-indent:2em;font-size:16px;}
 .pageinfo .movie .pagetext a{color:#497fd8;}
 .pageinfo .movie .pagetext a:hover{color:#ff3300;text-decoration:underline;}
 .pageinfo .movie .pagetext img{text-align:center;}

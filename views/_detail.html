@@ -9,6 +9,13 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var cid = '{{.info.Cid}}';
+		var obj = $("#c"+cid);
+		obj.attr("class","tab");
+	});
+</script>
 </head>
 <body>
 {{template "header" .}}
@@ -25,7 +32,7 @@
 					{{str2html .info.Content}}
 					</p>
 					{{str2html .rmlist}}
-					<p><img src="{{.info.Photo}}?watermark/2/text/54ix576O5YmnIHwgMjJWLk5FVA==/font/5b6u6L2v6ZuF6buR/fontsize/360/fill/I0NDQ0NDQw==/dissolve/100/gravity/South/dy/10" alt="{{.info.Name}}海报" /></p>
+					<p><img src="{{.info.Photo}}" alt="{{.info.Name}}海报" /></p>
 					<p>语言：{{.info.Language}} 类型：<a href="/m/{{.info.Cid}}/" target="_blank">{{.info.Cid|getclassname}}</a> 
 					<br />主演：{{.info.Actor}}
 					<br />导演：{{.info.Director}}
@@ -54,7 +61,7 @@
 				<a name="talk"></a>
 				<div class="talk">
 				<!-- 多说评论框 start -->
-					<div class="ds-thread" data-thread-key="V{{.info.Id}}" data-title="{{.info.Title}}" data-url="https://22v.net/v/{{.info.Id}}/"></div>
+					<div class="ds-thread" data-thread-key="V{{.info.Id}}" data-title="{{.info.Title}}" data-url="http://22v.net/v/{{.info.Id}}/"></div>
 				<!-- 多说评论框 end -->
 				<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 				<script type="text/javascript">

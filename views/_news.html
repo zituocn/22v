@@ -10,6 +10,13 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <link href="/static/css/vmovie.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var cid = '300';
+		var obj = $("#c"+cid);
+		obj.attr("class","tab");
+	});
+</script>
 </head>
 <body>
  {{template "header" .}}	

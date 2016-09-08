@@ -6,10 +6,13 @@ import (
 	"github.com/nfnt/resize"
 	"golang.org/x/net/context"
 	"image"
+	"image/draw"
 	"image/jpeg"
+	"image/png"
 	"io/ioutil"
 	"os"
 	"qiniupkg.com/api.v7/kodo"
+
 	"strings"
 )
 
@@ -48,7 +51,7 @@ func (this *UploadHandle) QiniuUpLoadFile() {
 
 		//save location file
 		filename = this.GetGUID() + ext
-		tempfilename := "temp_+filename"
+		tempfilename := "temp_" + filename
 		data, err := ioutil.ReadAll(file)
 		err = ioutil.WriteFile(imgdir+tempfilename, data, 0777)
 
@@ -82,19 +85,36 @@ func (this *UploadHandle) QiniuUpLoadFile() {
 		return
 	}
 }
+
+//添加水印和略缩
 func WaterMark(tempfilepath string, newfilepath string, ext string) bool {
 	imgb, _ := os.Open(tempfilepath)
-	img, _, err := image.Decode(imgb)
-	img = Resize(img)
+	img, _ := jpeg.Decode(imgb)
 	defer imgb.Close()
+
+	img = Resize(img)
+
+	wmb, _ := os.Open("static/img/mark.png")
+	watermark, _ := png.Decode(wmb)
+	defer wmb.Close()
+
+	//把水印写到右下角，并向0坐标各偏移10个像素
+	offset := image.Pt(img.Bounds().Dx()/2-watermark.Bounds().Dx()/2, img.Bounds().Dy()-watermark.Bounds().Dy()-10)
+	b := img.Bounds()
+	m := image.NewNRGBA(b)
+
+	draw.Draw(m, b, img, image.ZP, draw.Src)
+	draw.Draw(m, watermark.Bounds().Add(offset), watermark, image.ZP, draw.Over)
+
+	//生成新图片，并设置图片质量..
 	out, err := os.Create(newfilepath)
 	defer out.Close()
-	jpeg.Encode(out, img, &jpeg.Options{100})
+
+	jpeg.Encode(out, m, &jpeg.Options{100})
 	os.Remove(tempfilepath)
 	if err != nil {
 		return false
 	} else {
-
 		return true
 	}
 }

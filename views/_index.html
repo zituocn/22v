@@ -27,7 +27,7 @@
 			<div class="slider slider-wrapper theme-default">
 				<div id="slider" class="nivoSlider">
 					{{range .mphoto}}
-					<a href="/v/{{.Id}}/"><img src="{{.Iphoto}}?imageView2/1/w/558/h/314/q/100" width="558" height="314" alt="" title="{{.Name}}({{.Ename}})" /></a>{{end}}
+					<a href="/v/{{.Id}}/"><img src="{{.Iphoto}}" width="558" height="314" alt="" title="{{.Name}}({{.Ename}})" /></a>{{end}}
 				</div>				
 			</div>
 			<div class="wlist">
@@ -53,7 +53,7 @@
 				<ul>
 					<li class="title"><a href="/news/" class="green">美剧资讯</a></li>
 					{{range .plist}}
-					<li><a href="/article/{{.Id}}/" title="{{.Title}}">{{substr .Name 0 24}}</a></li>{{end}}
+					<li><a href="/article/{{.Id}}/" title="{{.Title}}">{{.Name}}</a></li>{{end}}
 					<li class="more"><a href="/news/">更多资讯..</a></li>
 				</ul>
 			</div>

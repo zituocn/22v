@@ -287,7 +287,7 @@ a.bold{font-weight:bold;}
 .pageinfo .movie .about a{color:#497fd8;font-size:13px;}
 .pageinfo .movie .pagetext{line-height:25px;padding:12px;min-height:300px;font-size:16px;}
 .pageinfo .movie .pagetext p{margin:10px 0 10px 0;text-indent:2em;font-size:16px;}
-.pageinfo .movie .pagetext a{color:#497fd8;}
+.pageinfo .movie .pagetext a{color:#497fd8;font-size:15px;}
 .pageinfo .movie .pagetext a:hover{color:#ff3300;text-decoration:underline;}
 .pageinfo .movie .pagetext img{text-align:center;}
 .pageinfo .movie .talk{margin-top:15px;border-top:2px dotted #ccc;padding-top:10px;}

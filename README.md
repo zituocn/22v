@@ -34,7 +34,7 @@ supervisord
 >三、网站备案成功，放回国内。
 
 ###网站地址
-http://22v.net
+https://22v.net
 
 ###手机版
-http://m.22v.net
+https://m.22v.net

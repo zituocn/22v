@@ -218,14 +218,8 @@ func (this *IndexHandle) Index() {
 	)
 	this.Ctx.Output.Header("Cache-Control", "public")
 
-	list100 := info.GetList(100, 7)
-	list200 := info.GetList(200, 14)
-	list1 := info.GetList(1, 7)
-	list2 := info.GetList(2, 7)
-	list3 := info.GetList(3, 7)
-	list4 := info.GetList(4, 7)
-	list5 := info.GetList(5, 7)
-	list6 := info.GetList(6, 7)
+	list100 := info.GetList(100, 21)
+	list200 := info.GetList(200, 21)
 	wlist := info.GetWeekList(7)
 
 	//友情链接推荐
@@ -235,19 +229,13 @@ func (this *IndexHandle) Index() {
 	plist := pinfo.GetTopNews(12)
 
 	///首页的图片推荐
-	info.Query().Filter("status", 1).Limit(6, 0).OrderBy("-Updatetime").All(&mphoto, "id", "name", "ename", "iphoto")
+	info.Query().Filter("status", 1).Limit(8, 0).OrderBy("-Updatetime").All(&mphoto, "id", "name", "ename", "iphoto")
 
 	//首页的新剧推荐
 	info.Query().Filter("isnew", 1).Limit(8, 0).OrderBy("-Updatetime").All(&newlist, "id", "name", "ename", "photo", "Hasepisode", "Episode")
 
 	this.Data["list100"] = list100
 	this.Data["list200"] = list200
-	this.Data["list1"] = list1
-	this.Data["list2"] = list2
-	this.Data["list3"] = list3
-	this.Data["list4"] = list4
-	this.Data["list5"] = list5
-	this.Data["list6"] = list6
 	this.Data["wlist"] = wlist
 	this.Data["mphoto"] = mphoto
 	this.Data["newlist"] = newlist
@@ -396,24 +384,24 @@ func (this *IndexHandle) Detail() {
 		hdurl := list[i-1].Hdtvurl
 		if strings.Contains(hdurl, "mkv") {
 			if i < 10 {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">第0%d集.HDTV.1024.中文字幕.mkv</a></li>", i, hdurl, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mkv</a></li>", i, hdurl, info.Name, i)
 			} else {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">第%d集.HDTV.1024.中文字幕.mkv</a></li>", i, hdurl, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mkv</a></li>", i, hdurl, info.Name, i)
 			}
 		} else {
 			if i < 10 {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">第0%d集.HDTV.1024.中文字幕.mp4</a></li>", i, hdurl, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mp4</a></li>", i, hdurl, info.Name, i)
 			} else {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">第%d集.HDTV.1024.中文字幕.mp4</a></li>", i, hdurl, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mp4</a></li>", i, hdurl, info.Name, i)
 			}
 		}
 	}
 	if count < (info.Episode + 1) {
 		for i := (count + 1); int64(i) < (info.Episode + 1); i++ {
 			if i < 10 {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\">第0%d集.HDTV.1024.中文字幕.mp4</li>", i, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\">%s.第0%d集.高清.中文字幕.mp4</li>", i, info.Name, i)
 			} else {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\">第%d集.HDTV.1024.中文字幕.mp4</li>", i, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\">%s.第%d集.高清.中文字幕.mp4</li>", i, info.Name, i)
 			}
 		}
 	}

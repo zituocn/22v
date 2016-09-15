@@ -66,7 +66,7 @@
 					<li class="title"><a href="/m/200/" class="blue">热门美剧</a></li>
 					{{range .list200}}
 					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/200/">更多受欢迎...</a></li>
+					<li class="more"><a href="/m/200/">更多热门美剧...</a></li>
 				</ul>
 			</div>	
 			<div class="slist">
@@ -74,69 +74,9 @@
 					<li class="title"><a href="/m/100/">最近更新</a></li>
 					{{range .list100}}
 					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/100/">更多更新...</a></li>
+					<li class="more"><a href="/m/100/">更多美剧下载...</a></li>
 				</ul>
 			</div>
-		</div>
-	</div>
-	<div class="box">
-		<div class="content">
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/1/">动作</a></li>
-					{{range .list1}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/1/">更多动作类...</a></li>
-				</ul>
-			</div>
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/2/">科幻魔幻</a></li>
-					{{range .list2}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/2/">更多科幻魔幻...</a></li>
-				</ul>
-			</div>			
-		</div>
-	</div>
-	<div class="box">
-		<div class="content">
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/3/">情景喜剧</a></li>
-					{{range .list3}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/3/">更多情景喜剧...</a></li>
-				</ul>
-			</div>
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/4/">罪案碟战</a></li>
-					{{range .list4}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/4/">更多罪案碟战...</a></li>
-				</ul>
-			</div>			
-		</div>
-	</div>
-	<div class="box">
-		<div class="content">
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/5/">灵异惊悚</a></li>
-					{{range .list5}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/5/">更多灵异惊悚...</a></li>
-				</ul>
-			</div>
-			<div class="slist">
-				<ul>
-					<li class="title"><a href="/m/6/">律政医务剧情</a></li>
-					{{range .list6}}
-					<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="/m/6/">更多律政医务剧情...</a></li>
-				</ul>
-			</div>			
 		</div>
 	</div>
 	<div class="clear"></div>

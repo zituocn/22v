@@ -25,7 +25,7 @@
 			<div class="movie">
 				<ul>
 					<li class="title">{{.cinfo.Name}}</li>
-					{{range .list}}<li><a href="/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					{{range .list}}<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
 				</ul>
 				<div class="clear"></div>
 				<div class="pager">

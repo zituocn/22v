@@ -14,11 +14,15 @@ type MovieHandle struct {
 //add page
 func (this *MovieHandle) Add() {
 	//所有影片分类
-	var classlist []*models.MovieClassInfo
-	var movieclass models.MovieClassInfo
+	var (
+		classlist  []*models.MovieClassInfo
+		movieclass models.MovieClassInfo
+		info       models.MovieInfo
+	)
 	movieclass.Query().All(&classlist)
 	this.Data["classlist"] = classlist
 	this.Data["AdminDir"] = this.admindir
+	this.Data["info"] = info
 	this.TplName = "admin/movieadd.html"
 }
 

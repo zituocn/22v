@@ -6,6 +6,9 @@
 <link href="/static/css/admin.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/admin.js"></script> 
+<script type="text/javascript" charset="utf-8" src="/static/editor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/editor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/editor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
 var cid = {{.info.Cid}};
 var status = {{.info.Status}};
@@ -82,7 +85,9 @@ $(function(){
       <td><input name="language" type="text" id="language" class="input" value="英语" placeholder="多个用,分开" value="{{.info.Language}}" style="width:230px"/></td></tr>                 
     <tr>
       <td valign="top">内容 ＊</td>
-      <td valign="top" colspan="3"><textarea id="content" placeholder="内容简介,文字不宜过长，回车分段..." name="content" style="width:70%;height:200px;">{{.info.Content}}</textarea>  </td>
+      <td valign="top" colspan="3">
+      <textarea id="editor" name="content" type="text/plain" style="width:98%;height:220px">
+      {{str2html .info.Content}}</textarea></td>
     </tr>
      <tr>
       <td>海报地址</td>
@@ -138,7 +143,14 @@ $(function(){
 </div>
 </form>
 <script type="text/javascript">
-  $(function(){
+  $(function()
+  {
+    var ue = UE.getEditor('editor',{
+       autoHeightEnabled: false,
+       autoFloatEnabled: false,
+       retainOnlyLabelPasted:true,
+       pasteplain:true
+    });
     if(cid>0)
     {
       $("#cid").val(cid);

@@ -418,8 +418,8 @@ func (this *IndexHandle) Detail() {
 	randlist := info.GetRandList(6)
 	this.Data["randlist"] = randlist
 
-	info.Content = strings.Replace(info.Content, "\r\n\r\n", "\r\n", -1)
-	info.Content = strings.Replace(info.Content, "\r\n", "<br />", -1)
+	info.Content = strings.Replace(info.Content, "&nbsp;", "", -1)
+	//info.Content = strings.Replace(info.Content, "\r\n", "<br />", -1)
 	//this.Data["downlist"] = downlist
 	this.Data["downitem"] = downitem
 	this.Data["info"] = info

@@ -239,8 +239,8 @@ a.bold{font-weight:bold;}
 .detail .movie .goback{text-align: center;}
 .detail .movie .goback a{display:block;padding:4px 8px 4px 8px;border:1px solid #eee;width:70px;float:right;}
 .detail .movie .talk{margin-top:15px;border-top:2px dotted #ccc;padding-top:10px;}
-.detail .download ul{padding-left:12px;}
-.detail .download ul li{line-height:24px;}
+.detail .download ul{padding-left:16px;}
+.detail .download ul li{color:#333;line-height:24px;}
 .detail .download ul li a{color:#497fd8;}
 .detail .download ul li a:hover{color:#f32d2d; text-decoration: underline;}
 .detail .attention{margin:10px;border-top:1px dotted #ddd;float:left;width:652px;}

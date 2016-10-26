@@ -45,7 +45,7 @@ func PushBaidu() error {
 	query := info.Query()
 	query = query.Filter("status__gte", 0)
 	query = query.Filter("ispush", 0).OrderBy("id")
-	query.Limit(100, 0).All(&list, "id") //一次100条数据...
+	query.Limit(20, 0).All(&list, "id") //一次20条数据...
 
 	//构造url和ids
 	if len(list) > 0 {
@@ -56,15 +56,19 @@ func PushBaidu() error {
 		}
 	}
 
-	o := orm.NewOrm()
-	o.QueryTable("movie_info").Filter("id__in", ids).Update(orm.Params{
-		"Ispush": 1,
-	})
+	if len(ids) > 0 {
+		o := orm.NewOrm()
+		o.QueryTable("movie_info").Filter("id__in", ids).Update(orm.Params{
+			"Ispush": 1,
+		})
+	}
 
-	//向baidu接口push信息
-	req := httplib.Post(push_url)
-	req.Body(strings.Join(urls, "\n"))
-	result, _ := req.String()
-	beego.Info(result)
+	if len(urls) > 0 {
+		//向baidu接口push信息
+		req := httplib.Post(push_url)
+		req.Body(strings.Join(urls, "\n"))
+		result, _ := req.String()
+		beego.Info(result)
+	}
 	return nil
 }

@@ -10,7 +10,7 @@
 		"watch_all": true,
 		"controllers": "",
 		"models": "",
-		"others": []
+		"others": ["task"]
 	},
 	"cmd_args": [
 		"web"

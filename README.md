@@ -28,6 +28,9 @@ supervisord
 请手动向user_info表中写入管理员登录帐号/密码(大写32位md5)的记录
 
 ###最近更新 
+2016.10.26
+>增加向baidu站长平台push网址的功能，使用beego的task功能，默认为10分钟一次，频率可以app.conf中配置。task的功能详情请查看 https://beego.me/docs/module/toolbox.md#task
+
 2016.9.8 
 >一、增加后台图片上传水印功能，水印图片指定为/static/img/mark.png  
 >二、修改部分样式和模板文件  

@@ -10,6 +10,14 @@
 <body>
 	<div class="error">
 		{{str2html .content}}
+		<br />
+		将于5秒后返回网站首页...
+		<script type="text/javascript">
+		    setTimeout("jumppage()", 3500);
+		    function jumppage() {
+		        top.location.href = "https://22v.net/";
+		    }
+		</script> 
 	</div>
 </body>
 </html>

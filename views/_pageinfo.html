@@ -21,7 +21,7 @@
 {{template "header" .}}
 	<div class="box">
 		<div class="pageinfo">
-			<div class="location">现在的位置：<a href="/">首页</a> > <a href="/news/">美剧资讯</a> > 文章正文</div>
+			<div class="location">现在的位置：<a href="https://22v.net/">首页</a> > <a href="https://22v.net/news/">美剧资讯</a> > 文章正文</div>
 			<div class="clear"></div>
 			<div class="movie">
 				<h3>{{.info.Title}}</h3>
@@ -55,12 +55,12 @@
 				<ul>
 					<li class="title">热门美剧下载</li>
 					{{range .hostlist}}
-					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li><a href="https://22v.net/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
 				</ul>				
 				<ul>
 					<li class="title">随便看看</li>
 					{{range .randlist}}
-					<li><a href="/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
+					<li><a href="https://22v.net/v/{{.Id}}/" target="_blank"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="90" height="120" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
 				</ul>		
 			</div>
 		</div>

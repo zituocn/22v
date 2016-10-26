@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/zituocn/VMovie/models"
 	_ "github.com/zituocn/VMovie/routers"
+	_ "github.com/zituocn/VMovie/task"
 )
 
 func main() {

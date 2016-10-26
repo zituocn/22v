@@ -35,6 +35,7 @@ type MovieInfo struct {
 	Updatetime  time.Time `orm:"auto_now_add;type(datetime)"` //更新某季下载的时间，用来排序最近更新
 	Editor      string    `orm:"size(50)"`                    //责任编辑
 	Isend       int64     //是否已更新完结
+	Ispush      int64     //是否已向baidu提交
 }
 
 func (m *MovieInfo) TableName() string {

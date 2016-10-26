@@ -23,7 +23,6 @@ func init() {
 	beego.Router("/news/", &controllers.IndexHandle{}, "*:News")
 	beego.Router("/news/:page:int/", &controllers.IndexHandle{}, "*:News")
 	beego.Router("/22v.net.html", &controllers.IndexHandle{}, "*:Start")
-
 	///error handel
 	beego.ErrorController(&controllers.HttpErrorHandle{})
 

@@ -102,7 +102,7 @@ func (m *MovieInfo) GetWeekList(pagesize int64) []*MovieInfo {
 	}
 	//fmt.Println(week)
 	query = query.Filter("updateweek", week)
-	query.Limit(pagesize, 0).OrderBy("-Id").All(&list)
+	query.Limit(pagesize, 0).OrderBy("-Views").All(&list)
 	return list
 }
 

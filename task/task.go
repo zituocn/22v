@@ -12,7 +12,7 @@ import (
 
 func init() {
 
-	///添加向baidu站长平台pusho数据的task
+	///添加向baidu站长平台push数据的task
 	///默认为10分钟一次...
 	time_con := beego.AppConfig.String("baidupush")
 	if len(time_con) == 0 {
@@ -68,7 +68,8 @@ func PushBaidu() error {
 		req := httplib.Post(push_url)
 		req.Body(strings.Join(urls, "\n"))
 		result, _ := req.String()
-		beego.Info(result)
+		beego.Info("baidu api返回结果：" + result)
 	}
+	beego.Info("baidu push end")
 	return nil
 }

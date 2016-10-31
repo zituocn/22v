@@ -15,7 +15,7 @@ func init() {
 	var err error
 	cc, err = cache.NewCache("memory", `{"interval":60}`)
 	if err != nil {
-		beego.Info(err)
+		beego.Error(err)
 	}
 }
 
@@ -25,6 +25,7 @@ func SetCache(key string, value interface{}) error {
 		return err
 	}
 	if cc == nil {
+		beego.Debug("set cache:cc is nil")
 		return errors.New("cache:cc is nil")
 	}
 	err = cc.Put(key, data, 3600*time.Second)
@@ -41,6 +42,7 @@ func GetCache(key string, to interface{}) error {
 	}
 	data := cc.Get(key)
 	if data == nil {
+		beego.Debug("get cache:缓存不存在:" + key)
 		return errors.New("cache:缓存不存在" + key)
 	}
 	err := Decode(data.([]byte), to)
@@ -49,11 +51,13 @@ func GetCache(key string, to interface{}) error {
 
 func RemoveCache(key string) error {
 	if cc == nil {
+		beego.Debug("remove cache:cc is nil")
 		return errors.New("cache:cc is nil")
 	}
 
 	err := cc.Delete(key)
 	if err != nil {
+		beego.Debug("remove cache:" + key + "删除失败")
 		return errors.New("cache:cahce 删除失败")
 	} else {
 		return nil
@@ -70,6 +74,7 @@ func Encode(data interface{}) ([]byte, error) {
 	enc := gob.NewEncoder(buf)
 	err := enc.Encode(data)
 	if err != nil {
+		beego.Error("gob encode:" + err.Error())
 		return nil, err
 	}
 	return buf.Bytes(), nil

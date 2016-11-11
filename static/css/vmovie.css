@@ -181,6 +181,8 @@ a.bold{font-weight:bold;}
 .content .slist ul li.title{height:16px;line-height:16px;text-align:left;font-weight:bold;background:none;border:0px;padding:0px;font-size:16px;float:left;width:958px;}
 .content .slist ul li.title a{font-size:16px;}
 .content .slist ul li.title:hover{border:0px;}
+.content .slist ul li.title span{display:block;float:right;margin-right:33px;}
+.content .slist ul li.title span a{font-size:14px;font-weight:normal;color:#888;}
 .content .slist ul li{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;-webkit-text-overflow:ellipsis;}
 .content .slist ul li {line-height:20px;width:122px;height:203px;padding-bottom:8px;float:left;text-align:center;margin:5px;overflow:hidden;border:1px solid #fff;}
 .content .slist ul li img{border:1px dotted #ddd;margin-bottom:3px;}
@@ -191,8 +193,10 @@ a.bold{font-weight:bold;}
 
 .content .nlist{float:left;width:558px;border:1px solid #ddd;background:#fff;border-radius: 5px;margin-top:15px;}
 .content .nlist ul{float:left;width:558px;padding:8px 10px 8px 10px;}
-.content .nlist ul li.title{height:16px;line-height:16px;text-align:left;font-weight:bold;background:none;border:0px;padding:0px;font-size:16px;float:left;width:958px;}
+.content .nlist ul li.title{height:16px;line-height:16px;text-align:left;font-weight:bold;background:none;border:0px;padding:0px;font-size:16px;float:left;width:540px;}
 .content .nlist ul li.title a{font-size:16px;color:#ff3300;}
+.content .nlist ul li.title span{display:block;float:right;margin-right:18px;}
+.content .nlist ul li.title span a{font-size:14px;font-weight:normal;color:#888;}
 .content .nlist ul li.title:hover{border:0px;}
 .content .nlist ul li{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;-webkit-text-overflow:ellipsis;}
 .content .nlist ul li {line-height:20px;width:122px;height:203px;padding-bottom:8px;float:left;text-align:center;margin:5px;overflow:hidden;border:1px solid #fff;}
@@ -207,6 +211,8 @@ a.bold{font-weight:bold;}
 .content .alist ul li.title{font-weight:bold;background:none;border:0px;padding:5px 0px 5px 0;font-size:16px;list-style:none;}
 .content .alist ul li.title{margin:0px;}
 .content .alist ul li.title a{font-size:16px;}
+.content .alist ul li.title span{display:block;float:right;margin-right:6px;}
+.content .alist ul li.title span a{font-size:14px;font-weight:normal;color:#888;}
 .content .alist ul li{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;-webkit-text-overflow:ellipsis;}
 .content .alist ul li {line-height:32px;margin-left:5px;border-bottom:1px dotted #ddd;background:url(/static/img/p.gif) no-repeat left center;padding-left:14px;}
 .content .alist ul li span.time{float:right;color:#888;margin-top:0px;+margin-top:-32px;_margin-top:-32px;}
@@ -219,6 +225,8 @@ a.bold{font-weight:bold;}
 .content .wlist ul{padding:8px 15px 8px 8px;float:left;}
 .content .wlist ul li.title{font-weight:bold;background:none;border:0px;padding:0px;font-size:16px;color:#ff3300;}
 .content .wlist ul li.title a{font-size:16px;}
+.content .wlist ul li.title span{display:block;float:right;margin-right:0px;}
+.content .wlist ul li.title span a{font-size:14px;font-weight:normal;color:#888;}
 .content .wlist ul li {line-height: 32px;padding-left:7px;border-bottom:1px dotted #ddd;width:358px;}
 .content .wlist ul li span.time{float:right;color:#888;margin-top:0px;+margin-top:-32px;_margin-top:-32px;}
 .content .wlist ul li.more{text-align: right;border:0px;}
@@ -241,6 +249,7 @@ a.bold{font-weight:bold;}
 .detail .movie .talk{margin-top:15px;border-top:2px dotted #ccc;padding-top:10px;}
 .detail .download ul{padding-left:16px;}
 .detail .download ul li{color:#333;line-height:24px;}
+.detail .download ul li span{color:#999;margin-left:6px;}
 .detail .download ul li a{color:#497fd8;}
 .detail .download ul li a:hover{color:#f32d2d; text-decoration: underline;}
 .detail .attention{margin:10px;border-top:1px dotted #ddd;float:left;width:652px;}

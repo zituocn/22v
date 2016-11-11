@@ -32,10 +32,9 @@
 			</div>
 			<div class="wlist">
 				<ul>
-					<li class="title">今日播出(星期{{.week}})</li>
+					<li class="title">今日播出(星期{{.week}}) <span><a href="https://22v.net/today/">更多今日更新..</a></span></li>
 					{{range .wlist}}
 					<li><a href="https://22v.net/v/{{.Id}}/" title="{{.Name}}">{{substr .Name 0 10}}({{substr .Ename 0 20}})</a><span class="time">{{GetMovieUpdateEP .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="https://22v.net/today/">更多今日更新...</a></li>
 				</ul>
 			</div>				
 		</div>
@@ -44,17 +43,16 @@
 		<div class="content">
 			<div class="nlist">
 				<ul>
-					<li class="title"><a href="https://22v.net/new/" class="red">新剧推荐</a></li>
-				{{range .newlist}}
+					<li class="title"><a href="https://22v.net/new/" class="red">新剧推荐</a><span><a href="https://22v.net/new/">更多新剧..</a></span></li>
+					{{range .newlist}}
 					<li><a href="https://22v.net/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}									
 				</ul>
 			</div>
 			<div class="alist">
 				<ul>
-					<li class="title"><a href="https://22v.net/news/" class="green">美剧资讯</a></li>
+					<li class="title"><a href="https://22v.net/news/" class="green">美剧资讯</a><span><a href="https://22v.net/news/">更多资讯..</a></span></li>
 					{{range .plist}}
 					<li><a href="https://22v.net/article/{{.Id}}/">{{.Name}}</a></li>{{end}}
-					<li class="more"><a href="https://22v.net/news/">更多资讯..</a></li>
 				</ul>
 			</div>
 		</div>
@@ -63,18 +61,16 @@
 		<div class="content">
 			<div class="slist">
 				<ul>
-					<li class="title"><a href="https://22v.net/m/200/" class="blue">热门美剧</a></li>
+					<li class="title"><a href="https://22v.net/m/200/" class="blue">热门美剧</a><span><a href="https://22v.net/m/200/">更多热门美剧..</a></span></li>
 					{{range .list200}}
 					<li><a href="https://22v.net/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="https://22v.net/m/200/">更多热门美剧...</a></li>
 				</ul>
 			</div>	
 			<div class="slist">
 				<ul>
-					<li class="title"><a href="https://22v.net/m/100/">最近更新</a></li>
+					<li class="title"><a href="https://22v.net/m/100/">最近更新</a><span><a href="https://22v.net/m/100/">更多美剧下载...</a></span></li>
 					{{range .list100}}
 					<li><a href="https://22v.net/v/{{.Id}}/"><img src="{{.Photo}}?imageView2/1/w/120/h/160/q/100" width="120" height="160" alt="{{.Title}}" /><br/>{{substr .Name 0 40}}</a><br /><span>{{GetMovieUpdateEPString .Hasepisode .Episode}}</span></li>{{end}}
-					<li class="more"><a href="https://22v.net/m/100/">更多美剧下载...</a></li>
 				</ul>
 			</div>
 		</div>

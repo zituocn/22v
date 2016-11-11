@@ -220,13 +220,13 @@ func (this *IndexHandle) Index() {
 
 	list100 := info.GetList(100, 21)
 	list200 := info.GetList(200, 21)
-	wlist := info.GetWeekList(7)
+	wlist := info.GetWeekList(8)
 
 	//友情链接推荐
 	links = rinfo.GetContent(1)
 
 	//首页的N条最新资讯
-	plist := pinfo.GetTopNews(12)
+	plist := pinfo.GetTopNews(13)
 
 	///首页的图片推荐
 	info.Query().Filter("status", 1).Limit(8, 0).OrderBy("-Updatetime").All(&mphoto, "id", "name", "ename", "iphoto")
@@ -384,15 +384,15 @@ func (this *IndexHandle) Detail() {
 		hdurl := list[i-1].Hdtvurl
 		if strings.Contains(hdurl, "mkv") {
 			if i < 10 {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mkv</a></li>", i, hdurl, info.Name, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mkv</a><span>(%s)</span></li>", i, hdurl, info.Name, i, this.FormatTime(list[i-1].Addtime, "MM/DD"))
 			} else {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mkv</a></li>", i, hdurl, info.Name, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mkv</a><span>(%s)</span></li>", i, hdurl, info.Name, i, this.FormatTime(list[i-1].Addtime, "MM/DD"))
 			}
 		} else {
 			if i < 10 {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mp4</a></li>", i, hdurl, info.Name, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第0%d集.高清.中文字幕.mp4</a><span>(%s)</span></li>", i, hdurl, info.Name, i, this.FormatTime(list[i-1].Addtime, "MM/DD"))
 			} else {
-				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mp4</a></li>", i, hdurl, info.Name, i)
+				downitem = downitem + fmt.Sprintf("<li id=\"hdtv%d\"><a href=\"%s\" target=\"_blank\">%s.第%d集.高清.中文字幕.mp4</a><span>(%s)</span></li>", i, hdurl, info.Name, i, this.FormatTime(list[i-1].Addtime, "MM/DD"))
 			}
 		}
 	}
